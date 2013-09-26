@@ -1,0 +1,148 @@
+// -----------------------------------------------------------
+// Main file: SASS variables, mixins, fonts, and @imports
+// -----------------------------------------------------------
+
+// --------------------------------------------------
+// Variables
+// --------------------------------------------------
+
+// Colors
+
+// $color-dark: #444;
+// $color: #666;
+// $color-light: #999;
+
+// Typography
+// $space: 15;
+
+//$font-serif: Georgia, "Times New Roman", Times, serif;
+//$font-sans: Helvetica, Arial, sans-serif;
+
+// --------------------------------------------------
+// Media queries and responsive features
+// --------------------------------------------------
+
+// Break Points
+
+$small-min: 480px;
+$medium-min: 760px;
+$large-min: 1025px;
+
+// Media Query Mixin
+
+@mixin breakpoint($bp) {
+	@media (min-width: $bp)  { @content; }
+}
+
+// --------------------------------------------------
+// Generic Mixins
+// --------------------------------------------------
+
+@mixin border-radius($radius: 3px) {
+	-moz-border-radius: $radius; /* FF1+ */
+	-webkit-border-radius: $radius; /* Saf3+, Chrome */
+	border-radius: $radius; /* Standard. IE9 */
+	/**
+	 * @bugfix border-radius background bleed
+	 * @see http://tumble.sneak.co.nz/post/928998513/fixing-the-background-bleed
+	 */
+	-webkit-background-clip: padding-box;
+}
+
+@mixin box-shadow($x: 0, $y: 3px, $spread: 3px, $color: #666) {
+	-moz-box-shadow: $x $y $spread $color; /* FF3.5+ */
+	-webkit-box-shadow: $x $y $spread $color; /* Saf3+, Chrome */
+	box-shadow: $x $y $spread $color; /* Standard. Opera 10.5, IE9 */
+}
+
+@mixin transition ($transition: 0.1s ease) {
+	-webkit-transition: $transition;
+	-moz-transition: $transition;
+	-o-transition: $transition;
+	-ms-transition: $transition;
+	transition: $transition;
+}
+
+@mixin margin-space ($multiplier: 1, $placement: '') {
+	margin#{$placement}: ($space * $multiplier) + px;
+}
+// Example Uses of the Mixin, assuming $space is 15
+// @include margin-space (2, -top); // margin-top: 30px;
+// @include margin-space (4); // margin: 60px;
+
+@mixin padding-space ($multiplier: 1, $placement: '') {
+	padding#{$placement}: ($space * $multiplier) + px;
+}
+
+// --------------------------------------------------
+// Image Versioning Functions: use these for all image references in SCSS.
+// --------------------------------------------------
+
+// Image Version Number
+$version: "?ver=1.0";
+
+// Image URL
+@function url_ver($path) {
+	@return url($path + $version);
+}
+
+// Example Use of the Function
+// .box {
+//		background: url_ver('path/to/image.png') no-repeat 0 0;
+//		background-image: url_ver('path/to/stuff');
+// }
+
+// Outputs:
+// .box {
+//		background: url("path/to/image.png?ver=1.0") no-repeat 0 0;
+//		background-image: url("path/to/stuff?ver=1.0");
+// }
+
+
+// Want to use the asset folder path variable?
+$assetpath: "/wp-content/themes/theme-name/assets/img/";
+
+@function path_url_ver($path) {
+	@return url($assetpath + $path + $version);
+}
+
+// Example Use of the Function
+// .box {
+//		background: path_url_ver("image.png") no-repeat 0 0;
+//		background-image: path_url_ver("image.jpg");
+// }
+
+// Outputs:
+// .box {
+//		background: url("/wp-content/themes/theme-name/assets/img/image.png?ver=1.0") no-repeat 0 0;
+//		background-image: url("/wp-content/themes/theme-name/assets/img/image.jpg?ver=1.0");
+// }
+
+
+// --------------------------------------------------
+// Styles: everything gets included from here.
+// --------------------------------------------------
+
+// RESET — Normalize, Boilerplate, Formalize
+@import "reset";
+
+// Crowd Favorite grid for content and Carrington Build
+@import "grid";
+
+// Helper Classes & Debug Styles
+@import "utility";
+
+// Carrington Build & Module Styling
+@import "build-modules";
+
+// Global Header
+@import "header";
+
+// Global Footer
+@import "footer";
+
+// Global Content
+@import "content";
+
+// Widgets
+@import "widgets";

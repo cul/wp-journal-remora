@@ -1,0 +1,910 @@
+/*
+ * HTML5 Boilerplate
+ *
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ *
+ * Detailed information about this CSS: h5bp.com/css
+ *
+ * ==|== normalize 1.1.2 ==========================================================
+ */
+/* =============================================================================
+   HTML5 display definitions
+   ========================================================================== */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block; }
+
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1; }
+
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+[hidden] {
+  display: none; }
+
+/* =============================================================================
+   Base
+   ========================================================================== */
+html {
+  font-size: 100%;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */ }
+
+html,
+button,
+input,
+select,
+textarea {
+  font-family: sans-serif; }
+
+body {
+  margin: 0;
+  font-size: 14px;
+  line-height: 18px; }
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none; }
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none; }
+
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  border: 0;
+  border-top: 1px solid #ccc;
+  height: 1px;
+  margin: 1em 0;
+  padding: 0; }
+
+img {
+  vertical-align: middle; }
+
+/* =============================================================================
+   Links
+   ========================================================================== */
+a {
+  color: #00e; }
+
+a:visited {
+  color: #551a8b; }
+
+a:hover {
+  color: #06e; }
+
+a:focus {
+  outline: thin dotted; }
+
+a:active,
+a:hover {
+  outline: 0; }
+
+/* =============================================================================
+   Typography
+   ========================================================================== */
+h1, .h1, .h1 {
+  font-size: 2em;
+  margin: 0.67em 0; }
+
+h2, .h2 {
+  font-size: 1.5em;
+  margin: 0.83em 0; }
+
+h3, .h3 {
+  font-size: 1.17em;
+  margin: 1em 0; }
+
+h4, .h4 {
+  font-size: 1em;
+  margin: 1.33em 0; }
+
+h5, .h5 {
+  font-size: 0.83em;
+  margin: 1.67em 0; }
+
+h6, .h6 {
+  font-size: 0.67em;
+  margin: 2.33em 0; }
+
+abbr[title] {
+  border-bottom: 1px dotted; }
+
+b, strong {
+  font-weight: bold; }
+
+blockquote {
+  margin: 1em 40px; }
+
+dfn {
+  font-style: italic; }
+
+mark {
+  background: #ff0;
+  color: #000; }
+
+p, pre {
+  margin: 1em 0; }
+
+pre, code, kbd, samp {
+  font-family: monospace, serif;
+  _font-family: 'courier new', monospace;
+  font-size: 1em; }
+
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word; }
+
+q {
+  quotes: none; }
+
+q:before, q:after {
+  content: '';
+  content: none; }
+
+small {
+  font-size: 80%; }
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sup {
+  top: -0.5em; }
+
+sub {
+  bottom: -0.25em; }
+
+/* =============================================================================
+   Lists
+   ========================================================================== */
+dl, menu, ol, ul {
+  margin: 1em 0; }
+
+dd {
+  margin: 0 0 0 40px; }
+
+menu, ol, ul {
+  padding: 0 0 0 40px; }
+
+nav ul, nav ol {
+  list-style: none;
+  list-style-image: none; }
+
+/* =============================================================================
+   Embedded content
+   ========================================================================== */
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic; }
+
+svg:not(:root) {
+  overflow: hidden; }
+
+/* =============================================================================
+   Figures
+   ========================================================================== */
+figure {
+  margin: 0; }
+
+/* =============================================================================
+   Forms
+   ========================================================================== */
+form {
+  margin: 0; }
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em; }
+
+legend {
+  border: 0;
+  *margin-left: -7px;
+  padding: 0;
+  white-space: normal; }
+
+button, input, select, textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle; }
+
+button, input {
+  line-height: normal; }
+
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+  *overflow: visible; }
+
+button[disabled], html input[disabled] {
+  cursor: default; }
+
+input[type="checkbox"], input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+  *width: 13px;
+  *height: 13px; }
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box; }
+
+input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none; }
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+
+textarea {
+  overflow: auto;
+  vertical-align: top; }
+
+/* =============================================================================
+   Tables
+   ========================================================================== */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* ==|== print styles =======================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+@media print {
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important; }
+
+  /* Black prints faster: h5bp.com/s */
+  a, a:visited {
+    text-decoration: underline; }
+
+  a[href]:after {
+    content: " (" attr(href) ")"; }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")"; }
+
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+    content: ""; }
+
+  pre, blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid; }
+
+  thead {
+    display: table-header-group; }
+
+  tr, img {
+    page-break-inside: avoid; }
+
+  img {
+    max-width: 100% !important; }
+
+  @page {
+    margin: 0.5cm; }
+
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3; }
+
+  h2, h3 {
+    page-break-after: avoid; } }
+/*	CSSGrid
+ *  https://github.com/crowdfavorite/css-grid
+ *	License: http://opensource.org/licenses/mit-license.php  */
+/** grid foundation
+ -------------------------------------------------- */
+.grid {
+  margin: 0 auto;
+  /* this makes the page wide but keeps content away from the edge */
+  padding: 12px; }
+
+/* fluid media */
+.row img,
+.row object,
+.row embed,
+.row video {
+  max-width: 100%; }
+
+/* 	Default Desktop/Tablet Grid
+	Works fine with older browsers that don't support media queries. */
+.grid {
+  width: 1024px; }
+
+.c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12,
+.c1-2, .c2-3, .c3-4, .c4-5, .c5-6, .c6-7, .c7-8, .c8-9, .c9-10, .c10-11, .c11-12,
+.c1-3, .c2-4, .c3-5, .c4-6, .c5-7, .c6-8, .c7-9, .c8-10, .c9-11, .c10-12,
+.c1-4, .c2-5, .c3-6, .c4-7, .c5-8, .c6-9, .c7-10, .c8-11, .c9-12,
+.c1-5, .c2-6, .c3-7, .c4-8, .c5-9, .c6-10, .c7-11, .c8-12,
+.c1-6, .c2-7, .c3-8, .c4-9, .c5-10, .c6-11, .c7-12,
+.c1-7, .c2-8, .c3-9, .c4-10, .c5-11, .c6-12,
+.c1-8, .c2-9, .c3-10, .c4-11, .c5-12,
+.c1-9, .c2-10, .c3-11, .c4-12,
+.c1-10, .c2-11, .c3-12,
+.c1-11, .c2-12,
+.c1-12 {
+  margin-left: 20px;
+  display: inline;
+  float: left;
+  min-height: 1px; }
+
+/* 	1/12 */
+.c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12 {
+  width: 67px; }
+
+.offset1 {
+  margin-left: 107px; }
+
+/* 	2/12 */
+.c1-2, .c2-3, .c3-4, .c4-5, .c5-6, .c6-7, .c7-8, .c8-9, .c9-10, .c10-11, .c11-12 {
+  width: 154px; }
+
+.offset2 {
+  margin-left: 194px; }
+
+/* 	3/12 */
+.c1-3, .c2-4, .c3-5, .c4-6, .c5-7, .c6-8, .c7-9, .c8-10, .c9-11, .c10-12 {
+  width: 241px; }
+
+.offset3 {
+  margin-left: 281px; }
+
+/* 	4/12 */
+.c1-4, .c2-5, .c3-6, .c4-7, .c5-8, .c6-9, .c7-10, .c8-11, .c9-12 {
+  width: 328px; }
+
+.offset4 {
+  margin-left: 368px; }
+
+/* 	5/12 */
+.c1-5, .c2-6, .c3-7, .c4-8, .c5-9, .c6-10, .c7-11, .c8-12 {
+  width: 415px; }
+
+.offset5 {
+  margin-left: 455px; }
+
+/* 	6/12 */
+.c1-6, .c2-7, .c3-8, .c4-9, .c5-10, .c6-11, .c7-12 {
+  width: 502px; }
+
+.offset6 {
+  margin-left: 542px; }
+
+/* 	7/12 */
+.c1-7, .c2-8, .c3-9, .c4-10, .c5-11, .c6-12 {
+  width: 589px; }
+
+.offset7 {
+  margin-left: 629px; }
+
+/* 	8/12 */
+.c1-8, .c2-9, .c3-10, .c4-11, .c5-12 {
+  width: 676px; }
+
+.offset8 {
+  margin-left: 716px; }
+
+/* 	9/12 */
+.c1-9, .c2-10, .c3-11, .c4-12 {
+  width: 763px; }
+
+.offset9 {
+  margin-left: 803px; }
+
+/* 	10/12 */
+.c1-10, .c2-11, .c3-12 {
+  width: 850px; }
+
+.offset10 {
+  margin-left: 890px; }
+
+/* 	11/12 */
+.c1-11, .c2-12 {
+  width: 937px; }
+
+.offset11 {
+  margin-left: 977px; }
+
+/* 	12/12 */
+.c1-12 {
+  width: 1024px; }
+
+/* 	Medium Sized Grid
+	Tablet sized columns. */
+@media only screen and (min-width: 760px) and (max-width: 1047px) {
+  .grid {
+    width: 700px;
+    padding: 24px; }
+
+  .c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12,
+  .c1-2, .c2-3, .c3-4, .c4-5, .c5-6, .c6-7, .c7-8, .c8-9, .c9-10, .c10-11, .c11-12,
+  .c1-3, .c2-4, .c3-5, .c4-6, .c5-7, .c6-8, .c7-9, .c8-10, .c9-11, .c10-12,
+  .c1-4, .c2-5, .c3-6, .c4-7, .c5-8, .c6-9, .c7-10, .c8-11, .c9-12,
+  .c1-5, .c2-6, .c3-7, .c4-8, .c5-9, .c6-10, .c7-11, .c8-12,
+  .c1-6, .c2-7, .c3-8, .c4-9, .c5-10, .c6-11, .c7-12,
+  .c1-7, .c2-8, .c3-9, .c4-10, .c5-11, .c6-12,
+  .c1-8, .c2-9, .c3-10, .c4-11, .c5-12,
+  .c1-9, .c2-10, .c3-11, .c4-12,
+  .c1-10, .c2-11, .c3-12,
+  .c1-11, .c2-12,
+  .c1-12 {
+    display: inline;
+    /* IE6/IE7 double-margin float bug fix */
+    float: left;
+    margin-left: 20px;
+    /* Prevent collapsing of empty columns. Min-height prevents collapse
+    everywhere but IE6. IE6 doesn't collapse empty collumns anyhow, so no need
+    for a fix there. */
+    min-height: 1px;
+    clear: none; }
+
+  /* 	1/12 */
+  .c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12 {
+    width: 40px; }
+
+  .offset1 {
+    margin-left: 80px; }
+
+  /* 	2/12 */
+  .c1-2, .c2-3, .c3-4, .c4-5, .c5-6, .c6-7, .c7-8, .c8-9, .c9-10, .c10-11, .c11-12 {
+    width: 100px; }
+
+  .offset2 {
+    margin-left: 140px; }
+
+  /* 	3/12 */
+  .c1-3, .c2-4, .c3-5, .c4-6, .c5-7, .c6-8, .c7-9, .c8-10, .c9-11, .c10-12 {
+    width: 160px; }
+
+  .offset3 {
+    margin-left: 200px; }
+
+  /* 	4/12 */
+  .c1-4, .c2-5, .c3-6, .c4-7, .c5-8, .c6-9, .c7-10, .c8-11, .c9-12 {
+    width: 220px; }
+
+  .offset4 {
+    margin-left: 260px; }
+
+  /* 	5/12 */
+  .c1-5, .c2-6, .c3-7, .c4-8, .c5-9, .c6-10, .c7-11, .c8-12 {
+    width: 280px; }
+
+  .offset5 {
+    margin-left: 320px; }
+
+  /* 	6/12 */
+  .c1-6, .c2-7, .c3-8, .c4-9, .c5-10, .c6-11, .c7-12 {
+    width: 340px; }
+
+  .offset6 {
+    margin-left: 380px; }
+
+  /* 	7/12 */
+  .c1-7, .c2-8, .c3-9, .c4-10, .c5-11, .c6-12 {
+    width: 400px; }
+
+  .offset7 {
+    margin-left: 440px; }
+
+  /* 	8/12 */
+  .c1-8, .c2-9, .c3-10, .c4-11, .c5-12 {
+    width: 460px; }
+
+  .offset8 {
+    margin-left: 500px; }
+
+  /* 	9/12 */
+  .c1-9, .c2-10, .c3-11, .c4-12 {
+    width: 520px; }
+
+  .offset9 {
+    margin-left: 560px; }
+
+  /* 	10/12 */
+  .c1-10, .c2-11, .c3-12 {
+    width: 580px; }
+
+  .offset10 {
+    margin-left: 620px; }
+
+  /* 	11/12 */
+  .c1-11, .c2-12 {
+    width: 640px; }
+
+  .offset11 {
+    margin-left: 680px; }
+
+  /* 	12/12 */
+  .c1-12 {
+    width: 700px; } }
+/* 	Large Desktop Grid
+	Very wide columns for large monitors. */
+@media only screen and (min-width: 1430px) {
+  .grid {
+    width: 1420px;
+    padding-left: 0;
+    padding-right: 0; }
+
+  .c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12,
+  .c1-2, .c2-3, .c3-4, .c4-5, .c5-6, .c6-7, .c7-8, .c8-9, .c9-10, .c10-11, .c11-12,
+  .c1-3, .c2-4, .c3-5, .c4-6, .c5-7, .c6-8, .c7-9, .c8-10, .c9-11, .c10-12,
+  .c1-4, .c2-5, .c3-6, .c4-7, .c5-8, .c6-9, .c7-10, .c8-11, .c9-12,
+  .c1-5, .c2-6, .c3-7, .c4-8, .c5-9, .c6-10, .c7-11, .c8-12,
+  .c1-6, .c2-7, .c3-8, .c4-9, .c5-10, .c6-11, .c7-12,
+  .c1-7, .c2-8, .c3-9, .c4-10, .c5-11, .c6-12,
+  .c1-8, .c2-9, .c3-10, .c4-11, .c5-12,
+  .c1-9, .c2-10, .c3-11, .c4-12,
+  .c1-10, .c2-11, .c3-12,
+  .c1-11, .c2-12,
+  .c1-12 {
+    margin-left: 20px;
+    display: inline;
+    float: left;
+    min-height: 1px; }
+
+  /* 	1/12 */
+  .c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12 {
+    width: 100px; }
+
+  .offset1 {
+    margin-left: 140px; }
+
+  /* 	2/12 */
+  .c1-2, .c2-3, .c3-4, .c4-5, .c5-6, .c6-7, .c7-8, .c8-9, .c9-10, .c10-11, .c11-12 {
+    width: 220px; }
+
+  .offset2 {
+    margin-left: 260px; }
+
+  /* 	3/12 */
+  .c1-3, .c2-4, .c3-5, .c4-6, .c5-7, .c6-8, .c7-9, .c8-10, .c9-11, .c10-12 {
+    width: 340px; }
+
+  .offset3 {
+    margin-left: 380px; }
+
+  /* 	4/12 */
+  .c1-4, .c2-5, .c3-6, .c4-7, .c5-8, .c6-9, .c7-10, .c8-11, .c9-12 {
+    width: 460px; }
+
+  .offset4 {
+    margin-left: 500px; }
+
+  /* 	5/12 */
+  .c1-5, .c2-6, .c3-7, .c4-8, .c5-9, .c6-10, .c7-11, .c8-12 {
+    width: 580px; }
+
+  .offset5 {
+    margin-left: 620px; }
+
+  /* 	6/12 */
+  .c1-6, .c2-7, .c3-8, .c4-9, .c5-10, .c6-11, .c7-12 {
+    width: 700px; }
+
+  .offset6 {
+    margin-left: 740px; }
+
+  /* 	7/12 */
+  .c1-7, .c2-8, .c3-9, .c4-10, .c5-11, .c6-12 {
+    width: 820px; }
+
+  .offset7 {
+    margin-left: 860px; }
+
+  /* 	8/12 */
+  .c1-8, .c2-9, .c3-10, .c4-11, .c5-12 {
+    width: 940px; }
+
+  .offset8 {
+    margin-left: 980px; }
+
+  /* 	9/12 */
+  .c1-9, .c2-10, .c3-11, .c4-12 {
+    width: 1060px; }
+
+  .offset9 {
+    margin-left: 1100px; }
+
+  /* 	10/12 */
+  .c1-10, .c2-11, .c3-12 {
+    width: 1180px; }
+
+  .offset10 {
+    margin-left: 1220px; }
+
+  /* 	11/12 */
+  .c1-11, .c2-12 {
+    width: 1300px; }
+
+  .offset11 {
+    margin-left: 1340px; }
+
+  /* 	12/12 */
+  .c1-12 {
+    width: 1420px; } }
+/* 	Accounts for extra margin on first column
+	This value should change a negative margin of whatever your gutter width is. */
+.row {
+  margin-left: -20px; }
+
+/* 	Single-column mobile
+	Get rid of widths and floats, go to fluid single column. */
+@media only screen and (max-width: 759px) {
+  .grid,
+  .c1, .c2, .c3, .c4, .c5, .c6, .c7, .c8, .c9, .c10, .c11, .c12,
+  .c1-2, .c2-3, .c3-4, .c4-5, .c5-6, .c6-7, .c7-8, .c8-9, .c9-10, .c10-11, .c11-12,
+  .c1-3, .c2-4, .c3-5, .c4-6, .c5-7, .c6-8, .c7-9, .c8-10, .c9-11, .c10-12,
+  .c1-4, .c2-5, .c3-6, .c4-7, .c5-8, .c6-9, .c7-10, .c8-11, .c9-12,
+  .c1-5, .c2-6, .c3-7, .c4-8, .c5-9, .c6-10, .c7-11, .c8-12,
+  .c1-6, .c2-7, .c3-8, .c4-9, .c5-10, .c6-11, .c7-12,
+  .c1-7, .c2-8, .c3-9, .c4-10, .c5-11, .c6-12,
+  .c1-8, .c2-9, .c3-10, .c4-11, .c5-12,
+  .c1-9, .c2-10, .c3-11, .c4-12,
+  .c1-10, .c2-11, .c3-12,
+  .c1-11, .c2-12,
+  .c1-12 {
+    display: block;
+    float: none;
+    margin-left: 0;
+    width: auto; }
+
+  .row {
+    margin-left: 0; } }
+/* Zeroing out leftmost nested .unit margins */
+[class*=c1] [class*=c1],
+[class*=c2] [class*=c2],
+[class*=c3] [class*=c3],
+[class*=c4] [class*=c4],
+[class*=c5] [class*=c5],
+[class*=c6] [class*=c6],
+[class*=c7] [class*=c7],
+[class*=c8] [class*=c8],
+[class*=c9] [class*=c9],
+[class*=c10] [class*=c10],
+[class*=c11] [class*=c11],
+.c12 .c12,
+.row .row {
+  margin-left: 0; }
+
+/* Full-width  */
+.c1-12 {
+  clear: both;
+  display: block;
+  min-height: 1px; }
+
+/** grid utilities
+ -------------------------------------------------- */
+/* Row offsetfix
+Uses variation of Nicolas Gallagher's Micro offsetfix.
+http://nicolasgallagher.com/micro-offsetfix-hack/ */
+.row:before,
+.row:after {
+  content: "";
+  display: table; }
+
+.row:after {
+  clear: both; }
+
+.row {
+  /* Just in case: make sure that rows offset outside floats. */
+  clear: both;
+  /* For IE 6/7 (trigger hasLayout) */
+  zoom: 1; }
+
+/* ==|== non-semantic helper classes ========================================
+   Please define your styles before this section.
+   ========================================================================== */
+/* For image replacement */
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  /* IE 6/7 fallback */
+  *text-indent: -9999px; }
+
+.ir:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 150%; }
+
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+.hidden {
+  display: none !important;
+  visibility: hidden; }
+
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; }
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto; }
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible {
+  visibility: hidden; }
+
+/* Contain floats: h5bp.com/q */
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table; }
+
+.clearfix:after {
+  clear: both; }
+
+.clearfix {
+  *zoom: 1; }
+
+/* 	Other Non-semantic Helpers
+	------------------------------------------------------- */
+.border-box {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/** WordPress compatibility styles
+ -------------------------------------------------- */
+.alignleft,
+.alignright {
+  margin-top: 4px; }
+
+.alignleft {
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 15px; }
+
+.alignright {
+  float: right;
+  margin-left: 20px;
+  margin-bottom: 15px; }
+
+.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+/**
+ * Captioned images
+ * Caption shortcode filtered.
+ */
+.wp-caption {
+  overflow: hidden; }
+
+.wp-caption dt {
+  margin: 0; }
+
+.wp-caption img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0; }
+
+.wp-caption dd {
+  font-size: .9em;
+  padding: 2px 8px 3px 8px;
+  margin: 1px 0 0 0; }
+
+.sticky {
+  /* Add styles here if you wish to callout sticky posts */ }
+
+/* --------------------------------------------------
+ * Standard / Utility Classes
+-------------------------------------------------- */
+/* Pagination */
+.pagination {
+  min-height: 20px;
+  margin: 30px 0; }
+
+.pagination .prev,
+.pagination .next {
+  display: block;
+  line-height: 1.2em;
+  width: 48%; }
+
+.pagination .next {
+  float: right;
+  text-align: right; }
+
+/** Masthead
+ -------------------------------------------------- */
+#masthead {
+  margin-bottom: 30px; }
+
+/* 	Main Navigation
+	------------------------------------------------------- */
+#nav-main {
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  padding: 8px 0;
+  width: 100%;
+  display: block;
+  float: left; }
+  #nav-main a {
+    display: block;
+    float: left; }
+  #nav-main ul {
+    display: block;
+    float: left; }
+  #nav-main > ul {
+    border-left: 1px solid #ddd; }
+  #nav-main li {
+    position: relative;
+    display: block;
+    float: left; }
+    #nav-main li:hover {
+      background: #f6f6f6; }
+      #nav-main li:hover > ul {
+        display: block; }
+    #nav-main li a {
+      border-right: 1px solid #ddd;
+      line-height: 2em;
+      padding: 0 10px; }
+    #nav-main li ul {
+      background: #f6f6f6;
+      display: none;
+      padding: .2em 0;
+      top: 2em;
+      width: 150px;
+      float: none;
+      position: absolute; }
+      #nav-main li ul li {
+        float: none; }
+        #nav-main li ul li a {
+          float: none;
+          border: 0; }
+
+/* 	Content - Posts, Pages, Comments
+	------------------------------------------------------- */
+/** Posts Default
+ -------------------------------------------------- */
+/** Attachment Page
+ -------------------------------------------------- */
+/** WP Gallery
+ -------------------------------------------------- */

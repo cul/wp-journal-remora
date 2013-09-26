@@ -21,14 +21,9 @@ get_header();
 ?>
 
 <div id="primary" class="c1-8">
-	<pre>
-		I am a magic page.
-	</pre>
 	<?php
-	// For the loop used, look in /loops
-	//cfct_loop();
-	//comments_template();
-	echo ($article_id = $remoraOJS->get_requested_article()) ? $remoraOJS->fetch_ojs_article_by_id($article_id) : 'Invalid article id: '.$_GET['article_id'];
+	$ojsDom = ($article_id = $remoraOJS->get_requested_article()) ? $remoraOJS->make_links_local($remoraOJS->fetch_ojs_article_by_id($article_id)) : $remoraOJS->fetch_ojs_issue_by_id('current');
+	echo $ojsDom->saveHTML();
 	?>
 </div><!-- #primary -->
 

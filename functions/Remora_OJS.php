@@ -25,7 +25,34 @@ class Remora_OJS {
 		$doc->loadHTMLFile($article_url);
 
 		return $doc;
-		//return $doc->saveHTML();
+	}
+
+	/**
+	 * Retrives an html galley from a remora-ready OJS install
+	 *
+	 * Parameters:
+	 * @ojs_article_id - Required. Int. A valid OJS article ID. Default: none.
+	 * @requested_galley - Required. String. A valid OJS article ID. Default: none.
+	 * @asAjax - Bool. Should the article be retrieved as a DOM segment. Default: true.
+	 *
+	 * Returns:
+	 * DomDocument, Redirect, or null
+	 */
+	function fetch_ojs_galley_by_article_id($ojs_article_id, $requested_galley, $asAjax = true){
+		$article_id = (int) $ojs_article_id;
+		$galley = preg_replace("/[^A-Za-z0-9_]/", "", (string) $requested_galley);
+
+		// If the requested galley is HTML grab the DOM
+		if(strpos($galley, 'htm') == 0 ){
+			$article_url = $this->journal_url."/article/view/".$article_id."/".$galley."?ajax=".(bool) $asAjax;
+			$doc = new DOMDocument();
+			$doc->loadHTMLFile($article_url);
+
+			return $doc;
+		}
+
+		// Download other galleys
+
 	}
 
 	/**
@@ -58,9 +85,19 @@ class Remora_OJS {
 	 *
 	 * Returns: Int or null.
 	 */
-	function get_requested_article() {
+	function get_requested_article_id() {
 		$article_id = (int) $_GET['article_id'];
 		return ($article_id) ? $article_id : null ;
+	}
+
+	/**
+	 * Gets the article id from the get data
+	 *
+	 * Returns: Int or null.
+	 */
+	function get_requested_galley_type() {
+		$galley_type = preg_replace("/[^A-Za-z0-9_]/", "", (string) $_GET['galley']);
+		return ($galley_type) ? $galley_type : null ;
 	}
 
 	/**
@@ -68,11 +105,54 @@ class Remora_OJS {
 	 *
 	 * Parameters:
 	 * @dom - DOM object
+	 * @translations - array of paths to convert, values local to the wp ojs page
 	 *
 	 * Returns:
 	 * DOM object with links changed to local
 	 */
-	function make_links_local($dom){
+	function make_links_local($dom, $translations = null){
+		$translations = array(
+			'\/article\/view\/(\d*)\/?$' => '/\1',
+			'\/article\/view\/(\d*)\/(.*)' => '/\1/?galley=\2'
+			);
+
+		foreach ($dom->getElementsByTagName('a') as $dom_link) {
+			$link = $dom_link->getAttribute('href');
+			foreach($translations as $old => $new) {
+				$old_url = $this->journal_url.$old;
+				$new_url = $this->local_url.$new;
+				// var_dump($old_url);
+				// var_dump($new_url);
+				// var_dump("\n\n");
+				$link = preg_replace('#'.$old_url.'#', $new_url, $link);
+				$dom_link->setAttribute('href', $link);
+			}
+			$dom->saveHTML();
+		}
+
+		return $dom;
+	}
+
+	/**
+	 * Cleans up DOM for document ingest
+	 * NOTE: INCOMPLETE
+	 *
+	 * Parameters:
+	 * @dom - DOM object
+	 *
+	 * Returns:
+	 * DOM object with certain tags removed
+	 */
+	function strip_dom_elements($dom){
+		$marked_nodes = array(
+			'html',
+			'body',
+			'title',
+			'head',
+			);
+
+		$marked_node->parentNode->removeChild($marked_node);
+
 		foreach ($dom->getElementsByTagName('a') as $link) {
 			$subject = $link->getAttribute('href');
 			$link->setAttribute('href', str_replace($this->journal_url.'/article/view/', $this->local_url.'/', $subject));

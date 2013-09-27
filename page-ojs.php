@@ -22,7 +22,17 @@ get_header();
 
 <div id="primary" class="c1-8">
 	<?php
-	$ojsDom = ($article_id = $remoraOJS->get_requested_article()) ? $remoraOJS->make_links_local($remoraOJS->fetch_ojs_article_by_id($article_id)) : $remoraOJS->fetch_ojs_issue_by_id('current');
+	$article_id = $remoraOJS->get_requested_article_id();
+	$galley = $remoraOJS->get_requested_galley_type();
+
+	// Fetch the galley dom if a galley is requested	
+	if($article_id && $galley) $ojsDom = $remoraOJS->fetch_ojs_galley_by_article_id($article_id, $galley);
+	// Fetch the article DOM if there is just an article id
+	elseif($article_id) $ojsDom = $remoraOJS->make_links_local($remoraOJS->fetch_ojs_article_by_id($article_id) );
+	// If nothing else, fetch the current issue TOC
+	else $ojsDom = $remoraOJS->make_links_local($remoraOJS->fetch_ojs_issue_by_id('current') );
+
+	// var_dump($ojsDom);
 	echo $ojsDom->saveHTML();
 	?>
 </div><!-- #primary -->

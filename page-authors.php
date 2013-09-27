@@ -21,7 +21,7 @@ get_header();
 ?>
 
 <div id="primary" class="c1-8">
-	<iframe src="<?php echo $remoraOJS->journal_url; ?>/author/submit" id="remora" style="width:100%; border: none;"></iframe>
+	<iframe src="<?php echo $remoraOJS->journal_url; ?>/author" id="remora" style="width:100%; border: none;"></iframe>
 </div><!-- #primary -->
 
 <?php 

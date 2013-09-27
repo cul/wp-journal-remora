@@ -121,9 +121,6 @@ class Remora_OJS {
 			foreach($translations as $old => $new) {
 				$old_url = $this->journal_url.$old;
 				$new_url = $this->local_url.$new;
-				// var_dump($old_url);
-				// var_dump($new_url);
-				// var_dump("\n\n");
 				$link = preg_replace('#'.$old_url.'#', $new_url, $link);
 				$dom_link->setAttribute('href', $link);
 			}

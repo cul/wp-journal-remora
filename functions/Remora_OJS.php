@@ -1,6 +1,6 @@
 <?php
 /**
- * This class contains functions for retrieving data from a remora-ready OJS install
+ * This class contains functions for retrieving data from a remora-ready journal install
  */
 class Remora_OJS {
 
@@ -13,13 +13,13 @@ class Remora_OJS {
 	}
 
 	/**
-	 * Fetches the output of a path from the OJS specified in settings
+	 * Fetches the output of a path from the journal specified in settings
 	 *
 	 * @path (string) Path in the journal to retrieve
 	 * @asAjax (bool) Whether to retreive the file as AJAX
 	 */
-	function fetch_ojs_page($ojs_page, $asAjax = true){
-		$page_url = ($asAjax) ? $this->journal_url.$ojs_page."?ajax=".(bool) $asAjax : $this->journal_url.$ojs_page;
+	function fetch_journal_html($journal_page, $asAjax = true){
+		$page_url = ($asAjax) ? $this->journal_url.$journal_page."?ajax=".(bool) $asAjax : $this->journal_url.$journal_page;
 		$page_output = stream_get_contents(( fopen($page_url, 'r')) );
 
 		return $page_output;
@@ -34,20 +34,20 @@ class Remora_OJS {
 	}
 
 	/**
-	 * Retrives an article from a remora-ready OJS install
+	 * Retrives an article from a remora-ready journal install
 	 *
 	 * Parameters:
-	 * @ojs_article_id - Required. Int. A valid OJS article ID. Default: none.
+	 * @journal_article_id - Required. Int. A valid journal article ID. Default: none.
 	 * @asAjax - Bool. Should the article be retrieved as a DOM segment. Default: true.
-	 * @journal_url - String. URL of the OJS install. Default: null.
+	 * @journal_url - String. URL of the journal install. Default: null.
 	 *
 	 * Returns:
 	 * DomDocument or null
 	 */
-	function fetch_ojs_article_by_id($ojs_article_id, $asAjax = true){
-		$article_id = (int) $ojs_article_id;
+	function fetch_journal_article_by_id($journal_article_id, $asAjax = true){
+		$article_id = (int) $journal_article_id;
 		$article_page = "/article/view/".$article_id;
-		$article = $this->fetch_ojs_page($article_page, $asAjax);
+		$article = $this->fetch_journal_html($article_page, $asAjax);
 
 		$doc = new DOMDocument();
 		$doc->loadHTML('<?xml encoding="UTF-8">' . $article);
@@ -56,24 +56,24 @@ class Remora_OJS {
 	}
 
 	/**
-	 * Retrives an html galley from a remora-ready OJS install
+	 * Retrives an html galley from a remora-ready journal install
 	 *
 	 * Parameters:
-	 * @ojs_article_id - Required. Int. A valid OJS article ID. Default: none.
-	 * @requested_galley - Required. String. A valid OJS article ID. Default: none.
+	 * @journal_article_id - Required. Int. A valid journal article ID. Default: none.
+	 * @requested_galley - Required. String. A valid journal article ID. Default: none.
 	 * @asAjax - Bool. Should the article be retrieved as a DOM segment. Default: true.
 	 *
 	 * Returns:
 	 * DomDocument, Redirect, or null
 	 */
-	function fetch_ojs_galley_by_article_id($ojs_article_id, $requested_galley, $asAjax = true){
-		$article_id = (int) $ojs_article_id;
+	function fetch_journal_galley_by_article_id($journal_article_id, $requested_galley, $asAjax = true){
+		$article_id = (int) $journal_article_id;
 		$galley = preg_replace("/[^A-Za-z0-9_]/", "", (string) $requested_galley);
 
 		// If the requested galley is HTML grab the DOM
 		if(strpos($galley, 'htm') == 0 ){
 			$galley_page = "/article/view/".$article_id."/".$galley;
-			$article = $this->fetch_ojs_page($galley_page, $asAjax);
+			$article = $this->fetch_journal_html($galley_page, $asAjax);
 
 			$doc = new DOMDocument();
 			$doc->loadHTML('<?xml encoding="UTF-8">' . $article);
@@ -86,24 +86,24 @@ class Remora_OJS {
 	}
 
 	/**
-	 * Retrives issue table of contents (TOC) from a remora-ready OJS install
+	 * Retrives issue table of contents (TOC) from a remora-ready journal install
 	 *
 	 * Parameters:
-	 * @ojs_issue_id - Required. Int. A valid OJS article ID. Default: none.
+	 * @journal_issue_id - Required. Int. A valid journal article ID. Default: none.
 	 * @asAjax - Bool. Should the article be retrieved as a DOM segment. Default: false.
 	 *
 	 * Returns:
 	 * DomDocument or null
 	 */
-	function fetch_ojs_issue_by_id($ojs_issue_id = 'current', $asAjax = true){
+	function fetch_journal_issue_by_id($journal_issue_id = 'current', $asAjax = true){
 		// Allow the issue id to be either "current" or an int
-		if($ojs_issue_id != 'current'){
-			if(is_int($ojs_issue_id)) $issue_id = (int) $ojs_issue_id;
+		if($journal_issue_id != 'current'){
+			if(is_int($journal_issue_id)) $issue_id = (int) $journal_issue_id;
 		}
 		else $issue_id = 'current';
 
 		$issue_page = "/issue/".$issue_id;
-		$issue = $this->fetch_ojs_page($issue_page, $asAjax);
+		$issue = $this->fetch_journal_html($issue_page, $asAjax);
 
 		$doc = new DOMDocument();
 		$doc->loadHTML('<?xml encoding="UTF-8">' . $issue);
@@ -138,7 +138,7 @@ class Remora_OJS {
 	 *
 	 * Parameters:
 	 * @dom - DOM object
-	 * @translations - array of paths to convert, values local to the wp ojs page
+	 * @translations - array of paths to convert, values local to the wp journal page
 	 *
 	 * Returns:
 	 * DOM object with links changed to local

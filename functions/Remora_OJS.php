@@ -13,6 +13,27 @@ class Remora_OJS {
 	}
 
 	/**
+	 * Fetches the output of a path from the OJS specified in settings
+	 *
+	 * @path (string) Path in the journal to retrieve
+	 * @asAjax (bool) Whether to retreive the file as AJAX
+	 */
+	function fetch_ojs_page($ojs_page, $asAjax = true){
+		$page_url = ($asAjax) ? $this->journal_url.$ojs_page."?ajax=".(bool) $asAjax : $this->journal_url.$ojs_page;
+		$page_output = stream_get_contents(( fopen($page_url, 'r')) );
+
+		return $page_output;
+	}
+
+	function strip_headers(&$dom){
+		// remove <!DOCTYPE 
+		$doc->removeChild($doc->firstChild);            
+
+		// remove <html><body></body></html> 
+		$doc->replaceChild($doc->firstChild->firstChild->firstChild, $doc->firstChild);
+	}
+
+	/**
 	 * Retrives an article from a remora-ready OJS install
 	 *
 	 * Parameters:
@@ -25,10 +46,11 @@ class Remora_OJS {
 	 */
 	function fetch_ojs_article_by_id($ojs_article_id, $asAjax = true){
 		$article_id = (int) $ojs_article_id;
-		$article_url = $this->journal_url."/article/view/".$article_id."?ajax=".(bool) $asAjax;
-		$article_text = stream_get_contents(( fopen($article_url, 'r')) );
+		$article_page = "/article/view/".$article_id;
+		$article = $this->fetch_ojs_page($article_page, $asAjax);
+
 		$doc = new DOMDocument();
-		$doc->loadHTML('<?xml encoding="UTF-8">' . $article_text);
+		$doc->loadHTML('<?xml encoding="UTF-8">' . $article);
 
 		return $doc;
 	}
@@ -50,10 +72,11 @@ class Remora_OJS {
 
 		// If the requested galley is HTML grab the DOM
 		if(strpos($galley, 'htm') == 0 ){
-			$article_url = $this->journal_url."/article/view/".$article_id."/".$galley."?ajax=".(bool) $asAjax;
-			$article_text = stream_get_contents(( fopen($article_url, 'r')) );
+			$galley_page = "/article/view/".$article_id."/".$galley;
+			$article = $this->fetch_ojs_page($galley_page, $asAjax);
+
 			$doc = new DOMDocument();
-			$doc->loadHTML('<?xml encoding="UTF-8">' . $article_text);
+			$doc->loadHTML('<?xml encoding="UTF-8">' . $article);
 
 			return $doc;
 		}
@@ -79,14 +102,16 @@ class Remora_OJS {
 		}
 		else $issue_id = 'current';
 
-		$issue_url = $this->journal_url.'/issue/'.$issue_id."?ajax=".(bool) $asAjax;
-		$issue_text = stream_get_contents(( fopen($issue_url, 'r')) );
+		$issue_page = "/issue/".$issue_id;
+		$issue = $this->fetch_ojs_page($issue_page, $asAjax);
+
 		$doc = new DOMDocument();
-		$doc->loadHTML('<?xml encoding="UTF-8">' . $issue_text);
+		$doc->loadHTML('<?xml encoding="UTF-8">' . $issue);
 
 		return $doc;
-		//return $doc->saveHTML();
 	}
+
+
 
 	/**
 	 * Gets the article id from the get data

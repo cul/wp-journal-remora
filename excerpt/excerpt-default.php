@@ -26,7 +26,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 	</header>
 	<div class="entry-content">
 		<?php
-			the_excerpt();
+			the_content();
 		?>
 	</div>
 	<div class="entry-footer entry-meta">

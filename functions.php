@@ -147,3 +147,12 @@ add_action('wp_enqueue_scripts', 'cfct_load_assets');
  */
 $remoraOJS = new Remora_OJS();
 
+/**
+ * Bootstrap
+ */
+include_once('functions/bootstrap-resources.php'); // Adds Twitter Bootstrap functionality and styles
+include_once('functions/wp_bootstrap_navwalker.php'); // Adds a Bootstrap compliant nav walker
+
+do_action('load_bootstrap_resources', true ); // Load Bootstrap resources
+add_action('wp_enqueue_scripts', 'cfct_load_assets');
+

@@ -21,8 +21,9 @@ class Remora_OJS {
 	function fetch_ojs_article_by_id($ojs_article_id, $asAjax = true){
 		$article_id = (int) $ojs_article_id;
 		$article_url = $this->journal_url."/article/view/".$article_id."?ajax=".(bool) $asAjax;
+		$article_text = stream_get_contents(( fopen($article_url, 'r')) );
 		$doc = new DOMDocument();
-		$doc->loadHTMLFile($article_url);
+		$doc->loadHTML('<?xml encoding="UTF-8">' . $article_text);
 
 		return $doc;
 	}
@@ -45,8 +46,9 @@ class Remora_OJS {
 		// If the requested galley is HTML grab the DOM
 		if(strpos($galley, 'htm') == 0 ){
 			$article_url = $this->journal_url."/article/view/".$article_id."/".$galley."?ajax=".(bool) $asAjax;
+			$article_text = stream_get_contents(( fopen($article_url, 'r')) );
 			$doc = new DOMDocument();
-			$doc->loadHTMLFile($article_url);
+			$doc->loadHTML('<?xml encoding="UTF-8">' . $article_text);
 
 			return $doc;
 		}
@@ -73,8 +75,9 @@ class Remora_OJS {
 		else $issue_id = 'current';
 
 		$issue_url = $this->journal_url.'/issue/'.$issue_id."?ajax=".(bool) $asAjax;
+		$issue_text = stream_get_contents(( fopen($issue_url, 'r')) );
 		$doc = new DOMDocument();
-		$doc->loadHTMLFile($issue_url);
+		$doc->loadHTML('<?xml encoding="UTF-8">' . $issue_text);
 
 		return $doc;
 		//return $doc->saveHTML();

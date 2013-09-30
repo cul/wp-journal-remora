@@ -908,3 +908,11 @@ http://nicolasgallagher.com/micro-offsetfix-hack/ */
  -------------------------------------------------- */
 /** WP Gallery
  -------------------------------------------------- */
+
+ #primary {
+  float:left;
+  width:699px;
+ }
+ #secondary {
+  float:right;
+ }

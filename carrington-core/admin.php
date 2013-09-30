@@ -84,11 +84,20 @@ function cfct_register_options() {
 			//This is a callback, use cfct_options_blank to display nothing
 			'description' => 'cfct_options_blank',
 			'fields' => array(
-				'logo' => array(
-                    'type' => 'media',
-                    'label' => __('Logo', 'carrington'),
-                    'name' => 'logo',
-                ),
+				'ojs_url' => array(
+					'type' => 'text',
+					'label' => __('OJS Path', 'carrington'),
+					'name' => 'ojs_url',
+					'help' => '<br /><span class="cfct-help">'.__('Path of the Open Journal Systems install to query.', 'carrington').'</span>',
+					'class' => 'cfct-text-long',
+				),
+				'wp_journal_slug' => array(
+					'type' => 'text',
+					'label' => __('WordPress Journal Page Slug', 'carrington'),
+					'name' => 'wp_journal_slug',
+					'help' => '<br /><span class="cfct-help">'.__('The slug of the page being used to access the journal.', 'carrington').'</span>',
+					'class' => 'cfct-text-long',
+				),
 				'about' => array(
 					'type' => 'textarea',
 					'label' => __('About text (shown in sidebar)', 'carrington'),

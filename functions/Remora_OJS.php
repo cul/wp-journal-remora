@@ -4,8 +4,13 @@
  */
 class Remora_OJS {
 
-	public $journal_url = "http://localhost/huahua-ojs/index.php/tremor"; // TODO: Change this to a setting
-	public $local_url = "http://localhost/huahua/ojs";
+	public $journal_url;
+	public $local_url;
+
+	function __construct(){
+		$this->journal_url = cfct_get_option('cfct_ojs_url');
+		$this->local_url = get_bloginfo('url').'/'.cfct_get_option('cfct_wp_journal_slug');
+	}
 
 	/**
 	 * Retrives an article from a remora-ready OJS install

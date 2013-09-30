@@ -29,19 +29,42 @@ get_header();
 			<li>If it is given an article number (e.g. "journal/1"), it will serve up that article abstract.</li>
 			<li>If it's given an article number and a galley id in a query string (e.g. "journal/1/html") it will serve the galley.</li>
 	</div>
+<?php
+	$abstract = $remoraOJS->get_abstract_by_id(55);
+	var_dump($abstract);
+?>
+	<div class="well">
+		<h1>
+			<?php echo $abstract->title; ?>
+		</h1>
+		<h4>
+			<?php echo $abstract->authors; ?>
+		</h4>
+		<div>
+			<?php echo $abstract->excerpt; ?>
+		</div>
+		<ul>
+			<?php
+			foreach($abstract->galleys as $galley) {
+				echo "<li>$galley</li>";
+			}
+			?>
+		</ul>
+	</div>
 	<?php
 	$article_id = $remoraOJS->get_requested_article_id();
 	$galley = $remoraOJS->get_requested_galley_type();
 
 	// Fetch the galley dom if a galley is requested	
-	if($article_id && $galley) $journal_page = $remoraOJS->fetch_galley_by_article_id($article_id, $galley);
+	if($article_id && $galley) $journal_page = $remoraOJS->get_galley_by_article_id($article_id, $galley);
 	// Fetch the article DOM if there is just an article id
-	elseif($article_id) $journal_page = $remoraOJS->fetch_article_by_id($article_id);
+	elseif($article_id) $journal_page = $remoraOJS->get_article_by_id($article_id);
 	// If nothing else, fetch the current issue TOC
-	else $journal_page = $remoraOJS->fetch_issue_by_id('current');
+	else $journal_page = $remoraOJS->get_issue_by_id('current');
 
-	echo $journal_page->url;
+	//echo $journal_page->url;
 	echo $remoraOJS->show_page($journal_page);
+
 
 	?>
 </div><!-- #primary -->

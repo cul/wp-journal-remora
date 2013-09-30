@@ -18,7 +18,7 @@ class Remora_OJS {
 	 * @path (string) Path in the journal to retrieve
 	 * @asAjax (bool) Whether to retreive the file as AJAX
 	 */
-	function fetch_journal_path($journal_page, $asAjax = true){
+	function get_journal_path($journal_page, $asAjax = true){
 		$page->url = ($asAjax) ? $this->journal_url.$journal_page."?ajax=".(bool) $asAjax : $this->journal_url.$journal_page;
 		$page->output = stream_get_contents(( fopen($page->url, 'r')) );
 
@@ -55,10 +55,10 @@ class Remora_OJS {
 	 * Returns:
 	 * DomDocument or null
 	 */
-	function fetch_article_by_id($article_id, $asAjax = true){
+	function get_article_by_id($article_id, $asAjax = true){
 		$article_id = (int) $article_id;
 		$article_page = "/article/view/".$article_id;
-		$article = $this->fetch_journal_path($article_page, $asAjax);
+		$article = $this->get_journal_path($article_page, $asAjax);
 		$article->type = 'article';
 
 		return $article;
@@ -75,13 +75,57 @@ class Remora_OJS {
 	 * Returns:
 	 * DomDocument or null
 	 */
-	function fetch_abstract_by_id($article_id, $asAjax = true){
+	function get_abstract_by_id($article_id, $excerpt_length = 55){
 		$article_id = (int) $article_id;
 		$article_page = "/article/view/".$article_id;
-		$article = $this->fetch_journal_path($article_page, $asAjax);
-		$article->type = 'article';
+		$article = $this->get_journal_path($article_page, true);
 
-		return $article;
+		$abstract->type = 'abstract';
+
+		// Load the output into a DOMDocument to get the values we need
+		$doc = new DOMDocument();
+		$doc->loadHTML('<?xml encoding="UTF-8">' . $article->output);
+
+		// Get the title
+		$article_title = $doc->getElementById('articleTitle');
+		$abstract->title = strip_tags($article_title->nodeValue);
+
+		// Get the authors
+		$article_authors = $doc->getElementById('authorString');
+		$abstract->authors = strip_tags($article_authors->nodeValue);
+
+		// Get the link
+		$abstract->link = preg_replace('#\/article\/view\/(\d*)\/?$#', $this->local_url.'/\1', $article_page);
+
+		// Get the abstract Text
+		$article_text = $doc->getElementById('articleAbstract');
+
+		// Remove the <h4></h4> and <br> at the top
+		$text_h4 = $article_text->getElementsByTagName('h4');
+		$article_text->removeChild($text_h4->item(0));
+		$text_br = $article_text->getElementsByTagName('br');
+		$article_text->removeChild($text_br->item(0));
+		$abstract->text = $doc->saveHTML($article_text);
+
+		// Filter out the excerpt from the text
+		$excerpt = strip_tags($abstract->text);
+		$excerpt_words = str_word_count($excerpt, 1);
+		foreach($excerpt_words as $word){
+			static $i;
+			$i++;
+			if($i > $excerpt_length) break;
+			$abstract->excerpt .= $word.' ';
+		}
+		$abstract->excerpt .= '[...]';
+
+		// Get the galleys
+		$article_galleys = $doc->getElementById('articleFullText');
+		$abstract->galleys = array();
+
+		foreach($article_galleys->getElementsByTagName('a') as $galley)
+			$abstract->galleys[] = $doc->saveHTML($galley);		
+
+		return $abstract;
 	}
 
 	/**
@@ -95,14 +139,14 @@ class Remora_OJS {
 	 * Returns:
 	 * DomDocument, Redirect, or null
 	 */
-	function fetch_galley_by_article_id($article_id, $requested_galley, $asAjax = true){
+	function get_galley_by_article_id($article_id, $requested_galley, $asAjax = true){
 		$article_id = (int) $article_id;
 		$galley = preg_replace("/[^A-Za-z0-9_]/", "", (string) $requested_galley);
 
 		// If the requested galley is HTML grab the DOM
 		if(strpos($galley, 'htm') == 0 ){
 			$galley_page = "/article/view/".$article_id."/".$galley;
-			$galley = $this->fetch_journal_path($galley_page, $asAjax);
+			$galley = $this->get_journal_path($galley_page, $asAjax);
 			$galley->type = 'galley';
 
 			return $galley;
@@ -122,7 +166,7 @@ class Remora_OJS {
 	 * Returns:
 	 * DomDocument or null
 	 */
-	function fetch_issue_by_id($journal_issue_id = 'current', $asAjax = true){
+	function get_issue_by_id($journal_issue_id = 'current', $asAjax = true){
 		// Allow the issue id to be either "current" or an int
 		if($journal_issue_id != 'current'){
 			if(is_int($journal_issue_id)) $issue_id = (int) $journal_issue_id;
@@ -130,7 +174,7 @@ class Remora_OJS {
 		else $issue_id = 'current';
 
 		$issue_page = "/issue/".$issue_id;
-		$issue = $this->fetch_journal_path($issue_page, $asAjax);
+		$issue = $this->get_journal_path($issue_page, $asAjax);
 		$issue->type = "issue";
 
 		return $issue;

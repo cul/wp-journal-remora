@@ -34,13 +34,13 @@ get_header();
 	$galley = $remoraOJS->get_requested_galley_type();
 
 	// Fetch the galley dom if a galley is requested	
-	if($article_id && $galley) $ojsDom = $remoraOJS->fetch_journal_galley_by_article_id($article_id, $galley);
+	if($article_id && $galley) $journal_page = $remoraOJS->fetch_journal_galley_by_article_id($article_id, $galley);
 	// Fetch the article DOM if there is just an article id
-	elseif($article_id) $ojsDom = $remoraOJS->make_links_local($remoraOJS->fetch_journal_article_by_id($article_id) );
+	elseif($article_id) $journal_page = $remoraOJS->fetch_journal_article_by_id($article_id);
 	// If nothing else, fetch the current issue TOC
-	else $ojsDom = $remoraOJS->make_links_local($remoraOJS->fetch_journal_issue_by_id('current') );
+	else $journal_page = $remoraOJS->fetch_journal_issue_by_id('current');
 
-	echo $ojsDom->saveHTML();
+	echo $journal_page->type;
 
 	?>
 </div><!-- #primary -->

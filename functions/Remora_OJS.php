@@ -18,19 +18,30 @@ class Remora_OJS {
 	 * @path (string) Path in the journal to retrieve
 	 * @asAjax (bool) Whether to retreive the file as AJAX
 	 */
-	function fetch_journal_html($journal_page, $asAjax = true){
-		$page_url = ($asAjax) ? $this->journal_url.$journal_page."?ajax=".(bool) $asAjax : $this->journal_url.$journal_page;
-		$page_output = stream_get_contents(( fopen($page_url, 'r')) );
+	function fetch_journal_path($journal_page, $asAjax = true){
+		$page->url = ($asAjax) ? $this->journal_url.$journal_page."?ajax=".(bool) $asAjax : $this->journal_url.$journal_page;
+		$page->output = stream_get_contents(( fopen($page->url, 'r')) );
 
-		return $page_output;
+		return $page;
 	}
 
-	function strip_headers(&$dom){
-		// remove <!DOCTYPE 
-		$doc->removeChild($doc->firstChild);            
+	/**
+	 * Cleans up the messy OJS headers
+	 */
+	function clean_html(&$doc){
+		// Remove <!DOCTYPE 
+		$doc->removeChild($doc->firstChild);
 
-		// remove <html><body></body></html> 
-		$doc->replaceChild($doc->firstChild->firstChild->firstChild, $doc->firstChild);
+		// Remove <title></title>
+		$titles = $body = $doc->getElementsByTagName('title');
+		foreach($titles as $title)
+			$title->parentNode->removeChild($title);
+
+		// Remove <html><body></body></html> through replacement
+		$body = $doc->getElementsByTagName('body');
+		$doc->replaceChild($body->item(0)->firstChild, $doc->firstChild);
+
+		return $dom;
 	}
 
 	/**
@@ -44,15 +55,33 @@ class Remora_OJS {
 	 * Returns:
 	 * DomDocument or null
 	 */
-	function fetch_journal_article_by_id($journal_article_id, $asAjax = true){
-		$article_id = (int) $journal_article_id;
+	function fetch_article_by_id($article_id, $asAjax = true){
+		$article_id = (int) $article_id;
 		$article_page = "/article/view/".$article_id;
-		$article = $this->fetch_journal_html($article_page, $asAjax);
+		$article = $this->fetch_journal_path($article_page, $asAjax);
+		$article->type = 'article';
 
-		$doc = new DOMDocument();
-		$doc->loadHTML('<?xml encoding="UTF-8">' . $article);
+		return $article;
+	}
 
-		return $doc;
+	/**
+	 * Retrives an article abstract from a remora-ready journal install
+	 *
+	 * Parameters:
+	 * @journal_article_id - Required. Int. A valid journal article ID. Default: none.
+	 * @asAjax - Bool. Should the article be retrieved as a DOM segment. Default: true.
+	 * @journal_url - String. URL of the journal install. Default: null.
+	 *
+	 * Returns:
+	 * DomDocument or null
+	 */
+	function fetch_abstract_by_id($article_id, $asAjax = true){
+		$article_id = (int) $article_id;
+		$article_page = "/article/view/".$article_id;
+		$article = $this->fetch_journal_path($article_page, $asAjax);
+		$article->type = 'article';
+
+		return $article;
 	}
 
 	/**
@@ -66,19 +95,17 @@ class Remora_OJS {
 	 * Returns:
 	 * DomDocument, Redirect, or null
 	 */
-	function fetch_journal_galley_by_article_id($journal_article_id, $requested_galley, $asAjax = true){
-		$article_id = (int) $journal_article_id;
+	function fetch_galley_by_article_id($article_id, $requested_galley, $asAjax = true){
+		$article_id = (int) $article_id;
 		$galley = preg_replace("/[^A-Za-z0-9_]/", "", (string) $requested_galley);
 
 		// If the requested galley is HTML grab the DOM
 		if(strpos($galley, 'htm') == 0 ){
 			$galley_page = "/article/view/".$article_id."/".$galley;
-			$article = $this->fetch_journal_html($galley_page, $asAjax);
+			$galley = $this->fetch_journal_path($galley_page, $asAjax);
+			$galley->type = 'galley';
 
-			$doc = new DOMDocument();
-			$doc->loadHTML('<?xml encoding="UTF-8">' . $article);
-
-			return $doc;
+			return $galley;
 		}
 
 		// Download other galleys
@@ -95,7 +122,7 @@ class Remora_OJS {
 	 * Returns:
 	 * DomDocument or null
 	 */
-	function fetch_journal_issue_by_id($journal_issue_id = 'current', $asAjax = true){
+	function fetch_issue_by_id($journal_issue_id = 'current', $asAjax = true){
 		// Allow the issue id to be either "current" or an int
 		if($journal_issue_id != 'current'){
 			if(is_int($journal_issue_id)) $issue_id = (int) $journal_issue_id;
@@ -103,14 +130,25 @@ class Remora_OJS {
 		else $issue_id = 'current';
 
 		$issue_page = "/issue/".$issue_id;
-		$issue = $this->fetch_journal_html($issue_page, $asAjax);
+		$issue = $this->fetch_journal_path($issue_page, $asAjax);
+		$issue->type = "issue";
 
-		$doc = new DOMDocument();
-		$doc->loadHTML('<?xml encoding="UTF-8">' . $issue);
-
-		return $doc;
+		return $issue;
 	}
 
+	/**
+	 * Outputs the DOM for a journal page
+	 */
+	function show_page($journal_page){
+		// Load the output into a DOMDocument for modification
+		$doc = new DOMDocument();
+		$doc->loadHTML('<?xml encoding="UTF-8">' . $journal_page->output);
+
+		$this->make_links_local($doc);
+		$this->clean_html($doc);
+
+		echo $doc->saveHTML();
+	}
 
 
 	/**
@@ -143,7 +181,7 @@ class Remora_OJS {
 	 * Returns:
 	 * DOM object with links changed to local
 	 */
-	function make_links_local($dom, $translations = null){
+	function make_links_local(&$dom, $translations = null){
 		$translations = array(
 			'\/article\/view\/(\d*)\/?$' => '/\1',
 			'\/article\/view\/(\d*)\/(.*)' => '/\1/?galley=\2'

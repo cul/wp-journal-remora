@@ -30,30 +30,6 @@ get_header();
 			<li>If it's given an article number and a galley id in a query string (e.g. "journal/1/html") it will serve the galley.</li>
 	</div>
 <?php
-if(!$article_id) {
-	$abstract = $remoraOJS->get_abstract_by_id(55, array('excerpt_length'=> 10));
-?>
-	<div class="well">
-		<h1>Abstract Excerpt</h1>
-		<h3>
-			<?php echo $abstract->title; ?>
-		</h3>
-		<h4>
-			<?php echo $abstract->authors; ?>
-		</h4>
-		<div>
-			<?php echo $abstract->excerpt; ?>
-		</div>
-		<ul>
-			<?php
-			foreach($abstract->galleys as $galley) {
-				echo "<li>$galley</li>";
-			}
-			?>
-		</ul>
-	</div>
-	<?php
-}
 	$article_id = $remoraOJS->get_requested_article_id();
 	$galley = $remoraOJS->get_requested_galley_type();
 

@@ -102,11 +102,13 @@ class Remora_OJS {
 		$article_text = $doc->getElementById('articleAbstract');
 
 		// Remove the <h4></h4> and <br> at the top
-		$text_h4 = $article_text->getElementsByTagName('h4');
-		$article_text->removeChild($text_h4->item(0));
-		$text_br = $article_text->getElementsByTagName('br');
-		$article_text->removeChild($text_br->item(0));
-		$abstract->text = $doc->saveHTML($article_text);
+		if(get_class($article_text) == 'DOMElement') {
+			$text_h4 = $article_text->getElementsByTagName('h4');
+			$article_text->removeChild($text_h4->item(0));
+			$text_br = $article_text->getElementsByTagName('br');
+			$article_text->removeChild($text_br->item(0));
+			$abstract->text = $doc->saveHTML($article_text);
+		}
 
 		// Filter out the excerpt from the text
 		$excerpt = strip_tags($abstract->text);

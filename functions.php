@@ -42,6 +42,7 @@ if (!(defined('CFCT_URL_VERSION'))) {
  */
 include_once(CFCT_PATH.'carrington-core/carrington.php');
 require_once(CFCT_PATH.'functions/Remora_OJS.php');
+include_once(CFCT_PATH.'functions/Remora_OJS_Widget.php');
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -146,6 +147,13 @@ add_action('wp_enqueue_scripts', 'cfct_load_assets');
  * Enable Remora OJS functionality
  */
 $remoraOJS = new Remora_OJS();
+
+// Register Remora_OJS_Widget widget
+function register_remora_ojs_widget() {
+    register_widget( 'Remora_OJS_Widget' );
+}
+add_action( 'widgets_init', 'register_remora_ojs_widget' );
+
 
 /**
  * Bootstrap

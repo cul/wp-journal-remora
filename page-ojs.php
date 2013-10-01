@@ -30,8 +30,7 @@ get_header();
 			<li>If it's given an article number and a galley id in a query string (e.g. "journal/1/html") it will serve the galley.</li>
 	</div>
 <?php
-	$abstract = $remoraOJS->get_abstract_by_id(55);
-	var_dump($abstract);
+	$abstract = $remoraOJS->get_abstract_by_id(55, array('excerpt_length'=> 10));
 ?>
 	<div class="well">
 		<h1>
@@ -57,15 +56,14 @@ get_header();
 
 	// Fetch the galley dom if a galley is requested	
 	if($article_id && $galley) $journal_page = $remoraOJS->get_galley_by_article_id($article_id, $galley);
-	// Fetch the article DOM if there is just an article id
+
+	// Or fetch the article DOM if there is just an article id
 	elseif($article_id) $journal_page = $remoraOJS->get_article_by_id($article_id);
-	// If nothing else, fetch the current issue TOC
+
+	// If nothing else, fetch the current issue Table of Contents
 	else $journal_page = $remoraOJS->get_issue_by_id('current');
 
-	//echo $journal_page->url;
 	echo $remoraOJS->show_page($journal_page);
-
-
 	?>
 </div><!-- #primary -->
 

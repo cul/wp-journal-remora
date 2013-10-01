@@ -65,17 +65,18 @@ class Remora_OJS {
 	}
 
 	/**
-	 * Retrives an article abstract from a remora-ready journal install
+	 * Retrieves an article abstract from a remora-ready journal install
 	 *
 	 * Parameters:
-	 * @journal_article_id - Required. Int. A valid journal article ID. Default: none.
-	 * @asAjax - Bool. Should the article be retrieved as a DOM segment. Default: true.
-	 * @journal_url - String. URL of the journal install. Default: null.
+	 * @article_id - Required. Int. A valid journal article ID. Default: none.
+	 * @args (array) An array of parameters. Currently supports:
+	 *			excerpt_length (int) Length for the excerpt in words
+	 *			more (string) Text placed at the end of the abbreviated text
 	 *
 	 * Returns:
-	 * DomDocument or null
+	 * Array
 	 */
-	function get_abstract_by_id($article_id, $excerpt_length = 55){
+	function get_abstract_by_id($article_id, $args = array()){
 		$article_id = (int) $article_id;
 		$article_page = "/article/view/".$article_id;
 		$article = $this->get_journal_path($article_page, true);
@@ -110,13 +111,14 @@ class Remora_OJS {
 		// Filter out the excerpt from the text
 		$excerpt = strip_tags($abstract->text);
 		$excerpt_words = str_word_count($excerpt, 1);
+		$excerpt_length = (array_key_exists('excerpt_length', $args) && is_int($args['excerpt_length']) ) ? $args['excerpt_length'] : 55;
 		foreach($excerpt_words as $word){
 			static $i;
 			$i++;
 			if($i > $excerpt_length) break;
 			$abstract->excerpt .= $word.' ';
 		}
-		$abstract->excerpt .= '[...]';
+		$abstract->excerpt .= (array_key_exists('more', $args)) ? $args['more'] : '[&hellip;]';
 
 		// Get the galleys
 		$article_galleys = $doc->getElementById('articleFullText');

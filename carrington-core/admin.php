@@ -84,6 +84,11 @@ function cfct_register_options() {
 			//This is a callback, use cfct_options_blank to display nothing
 			'description' => 'cfct_options_blank',
 			'fields' => array(
+				'logo' => array(
+                    'type' => 'media',
+                    'label' => __('Logo', 'carrington'),
+                    'name' => 'logo',
+                ),
 				'ojs_url' => array(
 					'type' => 'text',
 					'label' => __('OJS Path', 'carrington'),

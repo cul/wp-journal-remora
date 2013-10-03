@@ -1,0 +1,126 @@
+/**
+ * Styles for On Our Terms
+ *
+ * Built off of Bootstrap v. 3
+ *
+ */
+
+
+/**
+ * Basic layout
+ */
+
+ body {
+ 	background: @athenaCenter;
+ 	font-weight: @font-weight-base;
+
+ 	& > .container {
+ 		background: @white;
+
+ 		#main {
+ 			#primary, #secondary {
+ 				padding: @padding-large-vertical @padding-large-horizontal;
+ 			}
+ 			#primary {
+ 				padding-top: 0;
+ 			}
+ 			#secondary {
+ 				background: @aside-bg;
+
+ 				h1 {
+ 					font-size: @aside-font-size-h1;
+ 				}
+
+ 				h4 {
+ 					font-family: @font-family-base;
+ 					font-size: @font-size-base;
+ 					font-weight: @font-weight-base;
+
+ 					padding-bottom: @padding-small-vertical;
+ 					margin:0;
+ 				}
+
+ 				.widget {
+ 					font-size: @aside-font-size-base;
+
+ 					h1 {
+ 						margin-top: 0;
+ 					}
+
+ 					header {
+ 						padding-bottom: @padding-base-vertical;
+ 					}
+ 				}
+ 			}
+ 		}
+
+ 		#footer {
+ 			padding: @padding-large-vertical @padding-large-horizontal;
+ 		}
+ 	}
+
+ 	.byline {
+ 		font-size: @byline-font-size;
+ 		font-style: @byline-font-style;
+ 		font-weight: @byline-font-weight;
+
+ 		&:before {
+ 			content: "by ";
+ 		}
+ 	}
+ 	.navbar-default {
+ 		background: @navbar-default-bg;
+ 		.border-top-radius(0px);
+ 		.border-bottom-radius(0px);
+ 	}
+ }
+
+
+/**
+ * Small Screens
+ * Columns, offsets, pushes, and pulls for the small device range, from phones
+ * to tablets.
+ */
+ @media (min-width: @screen-sm-min) {
+
+ }
+
+ /** 
+ * Medium grid
+ *
+ * Columns, offsets, pushes, and pulls for the desktop device range.
+ */
+
+ @media (min-width: @screen-md-min) {
+
+ 	body {
+ 		background: @athenaCenter;
+
+ 		& > .container {
+ 			background: @white;
+
+ 			#main {
+ 				#primary {
+ 					float: left;
+ 					width: percentage((8 / @grid-columns));
+ 				}
+ 				#secondary {
+ 					.border-left-radius(6px);
+ 					float: right;
+ 					width: percentage((4 / @grid-columns));
+ 				}
+ 			}
+ 		}
+ 	}
+
+ }
+/**
+ * Large grid
+ *
+ * Columns, offsets, pushes, and pulls for the large desktop device range.
+ */
+ @media (min-width: @screen-lg-min) {
+
+
+
+ }

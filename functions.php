@@ -41,8 +41,7 @@ if (!(defined('CFCT_URL_VERSION'))) {
  * Includes
  */
 include_once(CFCT_PATH.'carrington-core/carrington.php');
-require_once(CFCT_PATH.'functions/Remora_OJS.php');
-include_once(CFCT_PATH.'functions/Remora_OJS_Widget.php');
+include_once(CFCT_PATH.'functions/site-utils.php');
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -128,31 +127,26 @@ function cfct_load_assets() {
 	$cfct_assets_url = get_template_directory_uri() . '/assets/';
 
 	// Styles
-	wp_enqueue_style('styles', $cfct_assets_url . 'css/style.css', array(), CFCT_URL_VERSION);
+	wp_enqueue_style('styles', $cfct_assets_url . 'css/styles-on-our-terms.min.css', array(), CFCT_URL_VERSION);
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
 	// Scripts
-	wp_enqueue_script('modernizr', $cfct_assets_url . 'js/modernizr-2.6.2.min.js', array(), CFCT_URL_VERSION);
-	wp_enqueue_script('placeholder', $cfct_assets_url . 'js/jquery.placeholder.min.js', array('jquery'), CFCT_URL_VERSION);
-	wp_enqueue_script('script', $cfct_assets_url . 'js/script.js', array('jquery', 'placeholder'), CFCT_URL_VERSION);
-	wp_enqueue_script('iphone-scaling-fix', $cfct_assets_url . 'js/ios-orientationchange-fix.js', array(), CFCT_URL_VERSION, true);
-	wp_enqueue_script('remora-iframe', $cfct_assets_url . 'js/remora.js', array(), CFCT_URL_VERSION);
+	//wp_enqueue_script('modernizr', $cfct_assets_url . 'js/modernizr-2.6.2.min.js', array(), CFCT_URL_VERSION);
+	//wp_enqueue_script('placeholder', $cfct_assets_url . 'js/jquery.placeholder.min.js', array('jquery'), CFCT_URL_VERSION);
+	//wp_enqueue_script('script', $cfct_assets_url . 'js/script.js', array('jquery', 'placeholder'), CFCT_URL_VERSION);
+	//wp_enqueue_script('iphone-scaling-fix', $cfct_assets_url . 'js/ios-orientationchange-fix.js', array(), CFCT_URL_VERSION, true);
 }
 add_action('wp_enqueue_scripts', 'cfct_load_assets');
 
 /**
  * Enable Remora OJS functionality
  */
-$remoraOJS = new Remora_OJS();
 
-// Register Remora_OJS_Widget widget
-function register_remora_ojs_widget() {
-    register_widget( 'Remora_OJS_Widget' );
-}
-add_action( 'widgets_init', 'register_remora_ojs_widget' );
+$remoraOJS = new Remora_OJS_Core();
+
 
 
 /**

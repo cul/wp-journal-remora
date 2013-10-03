@@ -29,7 +29,7 @@ get_header();
 			<li>If you're not logged in it provides the OJS login/register process which will also show up here.</li>
 		</ul>
 	</div>
-	<iframe src="<?php echo $remoraOJS->journal_url; ?>/author/submit" id="remora" style="width:100%; border: none;"></iframe>
+	<?php $remoraOJS->action_page('/author/submit', 'remora'); ?>
 </div><!-- #primary -->
 
 <?php 

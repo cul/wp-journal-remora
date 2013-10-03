@@ -16,22 +16,43 @@
 
  	& > .container {
  		background: @white;
+ 		.box-shadow(0px 0px 7px rgba(0,0,0,0.9));
+
+ 		#masthead {
+ 			h1 {
+ 				text-align: center;
+ 			}
+ 		}
 
  		#main {
- 			#primary, #secondary {
- 				padding: @padding-large-vertical @padding-large-horizontal;
+ 			header {
+ 				padding-bottom: @padding-base-vertical;
+
+ 				h1, h2, h3, h4, h5, h6 {
+ 					margin-bottom: 0;
+ 					&:first-child {
+ 						margin-top: 0;
+ 					}
+ 				}
+
+
+ 				time {
+ 					font-size: @byline-font-size;
+ 					font-weight: @byline-font-weight;
+ 				}
  			}
+
  			#primary {
- 				padding-top: 0;
+ 				padding: 0 @padding-large-horizontal @padding-large-vertical;
  			}
  			#secondary {
- 				background: @aside-bg;
+ 				padding: 0 0 @padding-large-horizontal @padding-large-vertical;
 
  				h1 {
  					font-size: @aside-font-size-h1;
  				}
 
- 				h4 {
+ 				h4, ul li a {
  					font-family: @font-family-base;
  					font-size: @font-size-base;
  					font-weight: @font-weight-base;
@@ -41,22 +62,32 @@
  				}
 
  				.widget {
+ 					background: @aside-bg;
  					font-size: @aside-font-size-base;
+ 					margin-bottom: @padding-base-vertical;
 
  					h1 {
  						margin-top: 0;
  					}
 
- 					header {
- 						padding-bottom: @padding-base-vertical;
- 					}
  				}
  			}
  		}
 
  		#footer {
  			padding: @padding-large-vertical @padding-large-horizontal;
+ 			margin-bottom: @padding-large-horizontal;
+
+ 			font-size: @aside-font-size-base;
+
+ 			hr {
+ 				margin-bottom: @padding-large-vertical;
+ 			}
  		}
+ 	}
+
+ 	code {
+ 		white-space: pre-wrap;
  	}
 
  	.byline {
@@ -75,6 +106,21 @@
  	}
  }
 
+ .navbar-toggle {
+ 	border-color: @navbar-inverse-toggle-border-color;
+ 	
+ 	#gradient > .vertical(@start-color: @studentPrograms; @end-color: darken(@studentPrograms, 12%));
+ 	.transition(2s background left);
+
+ 	&:hover,
+ 	&:focus {
+ 		#gradient > .vertical(@start-color: lighten(@studentPrograms, 8%); @end-color: darken(@studentPrograms, 12%));
+
+ 	}
+ 	.icon-bar {
+ 		background-color: @navbar-inverse-toggle-icon-bar-bg;
+ 	}
+ }
 
 /**
  * Small Screens
@@ -82,6 +128,8 @@
  * to tablets.
  */
  @media (min-width: @screen-sm-min) {
+
+
 
  }
 
@@ -105,9 +153,16 @@
  					width: percentage((8 / @grid-columns));
  				}
  				#secondary {
- 					.border-left-radius(6px);
  					float: right;
  					width: percentage((4 / @grid-columns));
+
+ 					.widget {
+ 						.border-left-radius(6px);
+ 						.box-shadow(-1px 2px 2px rgba(0, 0, 0, 0.37));
+
+ 						padding: @padding-large-vertical @padding-large-horizontal;
+
+ 					}
  				}
  			}
  		}

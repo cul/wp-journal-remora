@@ -17,7 +17,7 @@ function bootstrap_resources($local = true) {
 	wp_register_style('bootstrap-styles', $bsStyle);
 
 	//if($local) wp_enqueue_style('bootstrap-styles-cdn', '//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css');
-	wp_enqueue_script('bootstrap-scripts', $bsScript, 'jquery', '3.0.0', true);
+	wp_enqueue_script('bootstrap-scripts', $bsScript, array('jquery'), '3.0.0', true);
 	wp_enqueue_style('bootstrap-styles', $bsStyle, null, '3.0.0', true);
 
 }

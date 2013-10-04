@@ -42,6 +42,7 @@ if (!(defined('CFCT_URL_VERSION'))) {
  */
 include_once(CFCT_PATH.'carrington-core/carrington.php');
 include_once(CFCT_PATH.'functions/site-utils.php');
+include_once('functions/site-media-library.php'); // Adds WordPress-native media library functionality for themes
 
 /**
  * Set the content width based on the theme's design and stylesheet.

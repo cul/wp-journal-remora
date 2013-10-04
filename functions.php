@@ -143,7 +143,8 @@ add_action('wp_enqueue_scripts', 'cfct_load_assets');
  * Enable Remora OJS functionality
  */
 
-$remoraOJS = new Remora_OJS_Core();
+
+$remoraOJS = (class_exists(Remora_OJS_Core)) ? new Remora_OJS_Core() : null;
 
 
 

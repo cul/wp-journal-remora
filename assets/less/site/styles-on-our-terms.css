@@ -6408,7 +6408,7 @@ td.visible-print {
  * Remember that Bootstrap does mobile first: The base styles are the phone, smallest size, then larger styles are built up from there
  */
 body {
-  background: #005596;
+  background: #ffffff;
   font-weight: 300;
 }
 body > .container {
@@ -6571,9 +6571,9 @@ body .navbar-default {
   body > .container #main #secondary .widget {
     border-bottom-left-radius: 6px;
     border-top-left-radius: 6px;
-    -webkit-box-shadow: -1px 2px 2px rgba(0, 0, 0, 0.37);
-    box-shadow: -1px 2px 2px rgba(0, 0, 0, 0.37);
-    padding: 20px 16px;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
+    padding: 10px 16px;
   }
   body > .container #footer {
     padding: 20px 16px;
@@ -6589,4 +6589,28 @@ body .navbar-default {
  */
 @media (min-width: 1200px) {
   
+}
+/**
+  * A few tweaks for OJS
+  */
+body.wp {
+  background: #005596;
+}
+table.data td.label {
+  display: block;
+  width: 100%;
+  white-space: normal;
+  background: transparent;
+  text-align: left;
+  color: #333333;
+  font-size: 14px;
+}
+table.data td.label label {
+  font-weight: 300;
+  margin: 6px 12px;
+}
+table.data td.value {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
 }

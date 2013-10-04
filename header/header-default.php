@@ -34,7 +34,7 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 	<?php wp_head(); ?>
 
 </head>
-<body <?php body_class(); ?>>
+<body <?php body_class('wp'); ?>>
 	<div id="masthead-wallpaper"></div>
 	<div class="container grid">
 		<header id="masthead" class="row site-header clearfix">

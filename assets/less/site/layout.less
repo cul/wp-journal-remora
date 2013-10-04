@@ -13,9 +13,8 @@
  */
 
 // Extra-small styles
-
 body {
-	background: @athenaCenter;
+	background: @white;
 	font-weight: @font-weight-base;
 
 	& > .container {
@@ -192,7 +191,9 @@ body {
 
  					.widget {
  						.border-left-radius(6px);
- 						.box-shadow(-1px 2px 2px rgba(0, 0, 0, 0.37));
+ 						@shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5),0 1px 5px rgba(0, 0, 0, 0.5);
+ 						.box-shadow(@shadow);
+ 						//.box-shadow(-1px 2px 2px rgba(0, 0, 0, 0.37));
 
  						padding: @padding-large-vertical @padding-large-horizontal;
 
@@ -212,6 +213,7 @@ body {
  	}
 
  }
+
 /**
  * Large grid
  *
@@ -222,3 +224,39 @@ body {
 
 
  }
+
+
+ /**
+  * A few tweaks for OJS
+  */
+
+  body.wp {
+  	background: @athenaCenter;
+  }
+
+  // Fix OJS forms causing the iframe to misbehave at small sizes
+  table.data {
+  	td{
+  		&.label {
+  			display: block;
+  			width: 100%;
+  			white-space: normal;
+
+  			background: transparent;
+  			text-align: left;
+  			color: @text-color;
+  			font-size: @font-size-base;
+
+  			label {
+  				font-weight: @font-weight-base;
+  				margin: @padding-base-vertical @padding-base-horizontal;
+  			}
+  		}
+
+  		&.value {
+  			display: block;
+  			width: 100%;
+  			margin-bottom: @padding-large-vertical;
+  		}
+  	}
+  }

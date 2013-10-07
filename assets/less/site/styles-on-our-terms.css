@@ -6416,6 +6416,14 @@ body > .container {
   -webkit-box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.9);
   box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.9);
 }
+body > .container #masthead {
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f1f0f0), color-stop(85%, #ffffff), to(#ffffff));
+  background-image: -webkit-linear-gradient(#f1f0f0, #ffffff 85%, #ffffff);
+  background-image: -moz-linear-gradient(top, #f1f0f0, #ffffff 85%, #ffffff);
+  background-image: linear-gradient(#f1f0f0, #ffffff 85%, #ffffff);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff1f0f0', endColorstr='#ffffffff', GradientType=0);
+}
 body > .container #masthead h1 {
   text-align: center;
 }
@@ -6538,6 +6546,54 @@ body .navbar-default {
   -webkit-box-shadow: 0px -1px 2px rgba(20, 47, 0, 0.9);
   box-shadow: 0px -1px 2px rgba(20, 47, 0, 0.9);
 }
+#nav-secondary ul {
+  margin: 7.5px -15px;
+  padding-left: 0;
+}
+#nav-secondary ul > li > a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 20px;
+}
+@media (max-width: 767px) {
+  #nav-secondary ul .open .dropdown-menu {
+    position: static;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+  #nav-secondary ul .open .dropdown-menu > li > a,
+  #nav-secondary ul .open .dropdown-menu .dropdown-header {
+    padding: 5px 15px 5px 25px;
+  }
+  #nav-secondary ul .open .dropdown-menu > li > a {
+    line-height: 20px;
+  }
+  #nav-secondary ul .open .dropdown-menu > li > a:hover,
+  #nav-secondary ul .open .dropdown-menu > li > a:focus {
+    background-image: none;
+  }
+}
+@media (min-width: 768px) {
+  #nav-secondary ul {
+    float: left;
+    margin: 0;
+  }
+  #nav-secondary ul > li {
+    float: left;
+  }
+  #nav-secondary ul > li > a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
 /**
  * Small Screens
  * Columns, offsets, pushes, and pulls for the small device range, from phones
@@ -6571,8 +6627,8 @@ body .navbar-default {
   body > .container #main #secondary .widget {
     border-bottom-left-radius: 6px;
     border-top-left-radius: 6px;
-    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 1px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 1px 5px rgba(0, 0, 0, 0.5);
     padding: 10px 16px;
   }
   body > .container #footer {

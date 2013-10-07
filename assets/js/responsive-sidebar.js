@@ -23,7 +23,7 @@ jQuery(document).ready(function($){
 			
 			// Move the stuff to the place
 			if($('#'+nav_id+' #'+node_id).length == 0) {
-				$('<div class="nav-'+node_id+' collapse"><ul style="padding-left:0;"></ul></div>').appendTo('#'+nav_id);
+				$('<div class="nav-'+node_id+' collapse"><ul class="navbar-nav"></ul></div>').appendTo('#'+nav_id);
 				$('#'+node_id+' .widget').appendTo($('<li/>')).appendTo($('.nav-'+node_id+' ul'));
 			}
 		}

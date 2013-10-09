@@ -9,6 +9,8 @@ jQuery(document).ready(function($){
 		node_id = 'secondary';
 		nav_id = 'nav-main';
 		min_width = 768;
+
+		$('.navbar-toggle').collapse('show');
 		
 		// If it's smaller than the min_width send it to the navbar, otherwise send it back.
 		if($(window).width() <= min_width) {

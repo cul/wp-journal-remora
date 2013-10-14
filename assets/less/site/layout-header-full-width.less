@@ -1,0 +1,77 @@
+/**
+ * Styles for On Our Terms
+ *
+ * Built off of Bootstrap v. 3
+ *
+ */
+
+
+/**
+ * Basic layout
+ *
+ * Remember that Bootstrap does mobile first: The base styles are the phone, smallest size, then larger styles are built up from there
+ */
+
+// Extra-small styles
+
+// Small styles
+
+@media (min-width: @screen-sm-min) {
+	body {
+
+	&.wp{
+		background: @body-bg;
+	}
+
+	& > .container {
+		.box-shadow(none);
+
+		#masthead {
+			position: absolute;
+			left: 0;
+			margin: 0;
+
+			width: 100%;
+			min-height: @header-height;
+
+			#nav-main {
+				margin-bottom: 0;
+			}
+		}
+
+		#main {
+			margin-top: @header-height;
+			padding-top: @padding-large-vertical*2;
+		}
+	}
+}
+
+	#nav-main ul {
+		width: @container-sm;
+		padding: 0 (@grid-gutter-width/2);
+		margin: auto;
+		float: none;
+	}
+}
+
+// Medium styles
+@media (min-width: @screen-md-min) {
+	#nav-main ul {
+		width: @container-md;
+		padding: 0 (@grid-gutter-width/2);
+		margin: auto;
+		float: none;
+	}
+}
+
+// Large styles
+@media (min-width: @screen-lg-min) {
+	#nav-main ul {
+		width: @container-lg;
+		padding: 0 (@grid-gutter-width/2);
+		margin: auto;
+		float: none;
+	}
+}
+
+

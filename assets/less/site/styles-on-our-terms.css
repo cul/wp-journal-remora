@@ -579,6 +579,7 @@ dd {
   }
   .dl-horizontal dd {
     margin-left: 180px;
+    clear: both;
   }
   .dl-horizontal dd:before,
   .dl-horizontal dd:after {
@@ -704,6 +705,7 @@ pre code {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+  clear: both;
 }
 .container:before,
 .container:after {
@@ -732,6 +734,7 @@ pre code {
 .row {
   margin-left: -15px;
   margin-right: -15px;
+  clear: both;
 }
 .row:before,
 .row:after {
@@ -1840,6 +1843,7 @@ textarea.input-lg {
 .form-horizontal .form-group {
   margin-left: -15px;
   margin-right: -15px;
+  clear: both;
 }
 .form-horizontal .form-group:before,
 .form-horizontal .form-group:after {
@@ -3018,6 +3022,9 @@ input[type="button"].btn-block {
 .btn-group .btn-group + .btn-group {
   margin-left: -1px;
 }
+.btn-toolbar {
+  clear: both;
+}
 .btn-toolbar:before,
 .btn-toolbar:after {
   content: " ";
@@ -3132,6 +3139,9 @@ input[type="button"].btn-block {
   float: none;
   width: 100%;
   max-width: 100%;
+}
+.btn-group-vertical > .btn-group {
+  clear: both;
 }
 .btn-group-vertical > .btn-group:before,
 .btn-group-vertical > .btn-group:after {
@@ -3348,6 +3358,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   margin-bottom: 0;
   padding-left: 0;
   list-style: none;
+  clear: both;
 }
 .nav:before,
 .nav:after {
@@ -3553,6 +3564,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
     border-bottom-color: #ffffff;
   }
 }
+.tabbable {
+  clear: both;
+}
 .tabbable:before,
 .tabbable:after {
   content: " ";
@@ -3604,6 +3618,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   min-height: 50px;
   margin-bottom: 20px;
   border: 1px solid transparent;
+  clear: both;
 }
 .navbar:before,
 .navbar:after {
@@ -3633,6 +3648,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
   .navbar {
     border-radius: 4px;
   }
+}
+.navbar-header {
+  clear: both;
 }
 .navbar-header:before,
 .navbar-header:after {
@@ -3670,6 +3688,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   padding-left: 15px;
   border-top: 1px solid transparent;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  clear: both;
   -webkit-overflow-scrolling: touch;
 }
 .navbar-collapse:before,
@@ -4246,6 +4265,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   margin: 20px 0;
   list-style: none;
   text-align: center;
+  clear: both;
 }
 .pager:before,
 .pager:after {
@@ -4746,6 +4766,7 @@ a.list-group-item:focus {
 }
 .panel-body {
   padding: 15px;
+  clear: both;
 }
 .panel-body:before,
 .panel-body:after {
@@ -5102,6 +5123,7 @@ body.modal-open,
   padding: 19px 20px 20px;
   text-align: right;
   border-top: 1px solid #e5e5e5;
+  clear: both;
 }
 .modal-footer:before,
 .modal-footer:after {
@@ -5939,6 +5961,9 @@ body.modal-open,
   -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1);
 }
+.clearfix {
+  clear: both;
+}
 .clearfix:before,
 .clearfix:after {
   content: " ";
@@ -6660,4 +6685,67 @@ table.data td.value {
   display: block;
   width: 100%;
   margin-bottom: 10px;
+}
+/**
+ * Styles for On Our Terms
+ *
+ * Built off of Bootstrap v. 3
+ *
+ */
+/**
+ * Basic layout
+ *
+ * Remember that Bootstrap does mobile first: The base styles are the phone, smallest size, then larger styles are built up from there
+ */
+@media (min-width: 768px) {
+  body.wp {
+    background: #ffffff;
+  }
+  body > .container {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  body > .container #masthead {
+    position: absolute;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    min-height: 271px;
+  }
+  body > .container #masthead #nav-main {
+    margin-bottom: 0;
+  }
+  body > .container #main {
+    margin-top: 271px;
+    padding-top: 20px;
+  }
+  #nav-main ul {
+    width: 750px;
+    padding: 0 15px;
+    margin: auto;
+    float: none;
+  }
+}
+@media (min-width: 992px) {
+  #nav-main ul {
+    width: 970px;
+    padding: 0 15px;
+    margin: auto;
+    float: none;
+  }
+}
+@media (min-width: 1200px) {
+  #nav-main ul {
+    width: 1170px;
+    padding: 0 15px;
+    margin: auto;
+    float: none;
+  }
+}
+.excerpt.pull-left.span2 {
+  width: 24%;
+  padding: 0 10px;
+}
+.clearfix {
+  clear: both;
 }

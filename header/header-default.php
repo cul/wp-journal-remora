@@ -44,8 +44,6 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 			?>
 			
 			<h1 id="site-name"><a href="<?php echo home_url('/'); ?>" title="<?php _e('Home', 'carrington-blueprint'); ?>"><?php echo $siteLogo; ?></a></h1>
-		</header><!-- #masthead -->
-		<div id="main" class="row clearfix">
 			<nav id="nav-main" class="navbar navbar-default nav-stacked" role="navigation">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
@@ -74,4 +72,6 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 				<?php if (function_exists('dimox_breadcrumbs')) echo dimox_breadcrumbs(); ?>
 				<span class="fade-overflow"></span>
 			</div>
+		</header><!-- #masthead -->
+		<div id="main" class="row clearfix">
 

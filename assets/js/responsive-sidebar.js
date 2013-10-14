@@ -17,12 +17,12 @@ jQuery(document).ready(function($){
 			
 			// Create the collapse button if necessary
 			if($('#collapse-'+node_id).length == 0) {
-				var btn_collapse = '<button id="collapse-'+node_id+'" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-'+node_id+'"><span class="sr-only">Toggle asides</span><i class="glyphicon-star-empty glyphicon"></i></button><a class="btn" href="#"><i class="icon-align-left"></i></a>';
+				var btn_collapse = '<button id="collapse-'+node_id+'" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-'+node_id+'"><span class="sr-only">Toggle asides</span><i class="glyphicon-star-empty glyphicon"></i></button>';
 				$(btn_collapse).appendTo('#'+nav_id+' .navbar-header');
 			}
 
 			// Move the sidebar widgets to the navbar
-			if($('#'+nav_id+' #'+node_id).length == 0) {
+			if($('#'+nav_id+' #'+node_id).length == 0 && $('.nav-'+node_id).length == 0) {
 				var navCollapse = $('<div class="nav-'+node_id+' collapse navbar-nav"/>').append($('<ul id="widgets-'+node_id+'" />'));
 				console.debug(navCollapse);
 				$('#nav-main').append(navCollapse);
@@ -40,6 +40,7 @@ jQuery(document).ready(function($){
 		else {
 			console.debug('Moving '+node_id+' back because window width '+$(window).width()+' is greater than '+min_width);
 			$('.nav-'+node_id+' .widget').appendTo('#'+node_id);
+			$('.nav-'+node_id).remove();
 
 			// Change the nodes to <aside>
 				$('#'+node_id+' .widget').changeElementType('aside');

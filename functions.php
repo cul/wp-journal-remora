@@ -41,7 +41,8 @@ if (!(defined('CFCT_URL_VERSION'))) {
  * Includes
  */
 include_once(CFCT_PATH.'carrington-core/carrington.php');
-include_once(CFCT_PATH.'functions/site-utils.php');
+include_once(CFCT_PATH.'functions/site-utils.php'); // WP site utilities
+include_once(CFCT_PATH.'functions/WP_Widget_Chromeless_Text.php'); // Chromeless Text Widget
 include_once('functions/site-media-library.php'); // Adds WordPress-native media library functionality for themes
 
 /**
@@ -141,10 +142,15 @@ function cfct_load_assets() {
 }
 add_action('wp_enqueue_scripts', 'cfct_load_assets');
 
+
 /**
- * Enable Remora OJS functionality
+ * Theme functions
  */
 
+// Register widgets
+register_widget('WP_Widget_Text_Chromeless');
+
+// Enable Remora OJS functionality
 
 $remoraOJS = (class_exists(Remora_OJS_Core)) ? new Remora_OJS_Core() : null;
 
@@ -154,9 +160,9 @@ remove_filter( ‘the_content’, ‘wpautop’ );
 remove_filter( ‘the_excerpt’, ‘wpautop’ );
 
 
-/**
- * Bootstrap
- */
+
+//Bootstrap
+
 include_once('functions/bootstrap-resources.php'); // Adds Twitter Bootstrap functionality and styles
 include_once('functions/wp_bootstrap_navwalker.php'); // Adds a Bootstrap compliant nav walker
 

@@ -6533,6 +6533,36 @@ body .navbar-default {
 #nav-main .nav li:first-child {
   border-left: 1px #ffffff solid;
 }
+#nav-main .nav li:last-child a:before {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  padding-left: 0.25em;
+  content: "\e022";
+}
+#nav-main .nav li:last-child a:before:empty {
+  width: 1em;
+}
+#nav-main .nav li a[title='Submit an Article']:before {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  padding-left: 0.25em;
+  content: "\e022";
+}
+#nav-main .nav li a[title='Submit an Article']:before:empty {
+  width: 1em;
+}
 #nav-main .navbar-toggle {
   float: left !important;
   background-image: -webkit-gradient(linear, left 0%, left 100%, from(#fbfafa), to(#bfbcbc));
@@ -6757,4 +6787,14 @@ table.data td.value {
 }
 .panel-group .panel-heading {
   margin-bottom: 0;
+}
+.widget_text_chromeless {
+  padding: 0 !important;
+}
+#sidebarTwitterWidget {
+  padding: 0 !important;
+}
+#sidebarTwitterWidget iframe {
+  width: 100% !important;
+  min-width: 1px !important;
 }

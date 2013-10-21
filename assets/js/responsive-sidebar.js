@@ -45,7 +45,9 @@ jQuery(document).ready(function($){
 				$('#nav-main').append(navCollapse);
 
 				// Change the nodes to <li>
-				$('#'+node_id+' .widget').changeElementType('li');
+				$('#'+node_id+' .widget').each(function(){
+					$(this).changeElementType('li');
+				});
 
 				// Add them to the navbar. We have
 				$('#'+node_id+' .widget').each(function(){
@@ -59,7 +61,9 @@ jQuery(document).ready(function($){
 			$('.nav-'+node_id).remove();
 
 			// Change the nodes to <aside>
-				$('#'+node_id+' .widget').changeElementType('aside');
+				$('#'+node_id+' .widget').each(function(){
+					$(this).changeElementType('aside');
+				});
 		}
 	}
 });

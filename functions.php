@@ -148,7 +148,11 @@ add_action('wp_enqueue_scripts', 'cfct_load_assets');
  */
 
 // Register widgets
-register_widget('WP_Widget_Text_Chromeless');
+// register Foo_Widget widget
+function register_chromeless_text_widget() {
+    register_widget( 'WP_Widget_Chromeless_Text' );
+}
+add_action( 'widgets_init', 'register_chromeless_text_widget' );
 
 // Enable Remora OJS functionality
 

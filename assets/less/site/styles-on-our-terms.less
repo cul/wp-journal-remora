@@ -19,11 +19,25 @@
 // Hacky
 
 .excerpt.pull-left.span2 {
-width: 24%;
+	width: 24%;
 
-padding: 0 @padding-small-horizontal;
+	padding: 0 @padding-small-horizontal;
 }
 
 .clearfix {
 	clear: both;
+}
+
+.panel-group { 
+
+	.panel-default > .panel-heading + .panel-collapse .panel-body {
+		border-top: none;
+	}
+	.panel {
+		padding-bottom: 0;
+	}
+
+	.panel-heading {
+		margin-bottom: 0;
+	}
 }

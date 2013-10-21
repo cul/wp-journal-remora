@@ -6749,3 +6749,12 @@ table.data td.value {
 .clearfix {
   clear: both;
 }
+.panel-group .panel-default > .panel-heading + .panel-collapse .panel-body {
+  border-top: none;
+}
+.panel-group .panel {
+  padding-bottom: 0;
+}
+.panel-group .panel-heading {
+  margin-bottom: 0;
+}

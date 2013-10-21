@@ -903,3 +903,6 @@ table.data td.label{display:block;width:100%;white-space:normal;background:trans
 table.data td.value{display:block;width:100%;margin-bottom:10px;}
 @media (min-width:768px){body.wp{background:#ffffff;} body>.container{-webkit-box-shadow:none;box-shadow:none;}body>.container #masthead{position:absolute;left:0;margin:0;width:100%;min-height:271px;}body>.container #masthead #nav-main{margin-bottom:0;} body>.container #main{margin-top:271px;padding-top:20px;} #nav-main ul{width:750px;padding:0 15px;margin:auto;float:none;}}@media (min-width:992px){#nav-main ul{width:970px;padding:0 15px;margin:auto;float:none;}}@media (min-width:1200px){#nav-main ul{width:1170px;padding:0 15px;margin:auto;float:none;}}.excerpt.pull-left.span2{width:24%;padding:0 10px;}
 .clearfix{clear:both;}
+.panel-group .panel-default>.panel-heading+.panel-collapse .panel-body{border-top:none;}
+.panel-group .panel{padding-bottom:0;}
+.panel-group .panel-heading{margin-bottom:0;}

@@ -148,6 +148,10 @@ add_action('wp_enqueue_scripts', 'cfct_load_assets');
 
 $remoraOJS = (class_exists(Remora_OJS_Core)) ? new Remora_OJS_Core() : null;
 
+// Filters
+
+remove_filter( ‘the_content’, ‘wpautop’ );
+remove_filter( ‘the_excerpt’, ‘wpautop’ );
 
 
 /**

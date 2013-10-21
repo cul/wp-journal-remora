@@ -22,17 +22,17 @@ get_header();
 
 <div id="primary" class="c1-8">
 
-	<div id="featured row clearfix">
+	<section id="featured row clearfix">
 		<?php
 		$remoraOJS = (class_exists(Remora_OJS_Core)) ? new Remora_OJS_Core() : null;
 		$articles = array(9, 3, 5, 8);
 		$sectionImage = 'http://www.consiliencejournal.org/blog/wp-content/uploads/2012/06/MjPFeP1339472471.jpg';
 		foreach($articles as $article){
-			$abstract = $remoraOJS->get_abstract_by_id($article, array('excerpt_length'=> 60));
+			$abstract = $remoraOJS->get_abstract_by_id($article, array('excerpt_length'=> 24));
 
 			if (!$abstract) continue;
 
-			echo '<div class="excerpt pull-left span2">
+			echo '<article class="excerpt pull-left span2">
 			<header>
 			<img src="'.$sectionImage.'" style="height: 120px !important;" />
 			<h4 class="excerpt-title">
@@ -52,7 +52,7 @@ get_header();
 			}
 			echo'
 			</ul>
-			</div>';
+			</article>';
 
 			switch($sectionImage){
 				case 'http://www.consiliencejournal.org/blog/wp-content/uploads/2012/06/MjPFeP1339472471.jpg':
@@ -69,7 +69,7 @@ get_header();
 			}
 		}
 		?>
-	</div>
+	</section>
 	<div class="clearfix">
 		<?php
 		cfct_loop();

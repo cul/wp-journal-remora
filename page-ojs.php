@@ -21,14 +21,6 @@ get_header();
 ?>
 
 <div id="primary" class="c1-8">
-	<div class="well">
-		<p>This page is a magic page.</p>
-		<ul>
-			<li>It magically changes links into WP links in the OJS pages it retrieves.</li>
-			<li>If it's not given an article number after it in the URL it will serve up the current issue.</li>
-			<li>If it is given an article number (e.g. "journal/1"), it will serve up that article abstract.</li>
-			<li>If it's given an article number and a galley id in a query string (e.g. "journal/1/html") it will serve the galley.</li>
-	</div>
 <?php
 	$article_id = $remoraOJS->get_requested_article_id();
 	$galley = $remoraOJS->get_requested_galley_type();

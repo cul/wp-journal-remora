@@ -90,7 +90,7 @@ if (! function_exists('cfct_theme_setup')) {
 		 */
 		register_nav_menus(array(
 			'main' => 'Main Navigation',
-			'footer' => 'Footer Navigation'
+			'actions' => 'Actions'
 		));
 
 		/**

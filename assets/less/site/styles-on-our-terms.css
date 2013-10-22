@@ -6527,41 +6527,53 @@ body .navbar-default {
   border-bottom-right-radius: 0px;
   border-bottom-left-radius: 0px;
 }
+#nav-main ul {
+  padding: 0 15px;
+  margin: auto;
+}
+#nav-main ul .nav-main {
+  float: left !important;
+  width: 58.333333333333336%;
+}
+#nav-main ul .nav-actions {
+  float: right !important;
+  width: 25%;
+}
+#nav-main ul .nav-actions a[title='Submit an Article']:before {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  padding-right: 0.25em;
+  content: "\e022";
+}
+#nav-main ul .nav-actions a[title='Submit an Article']:before:empty {
+  width: 1em;
+}
+#nav-main ul .nav-actions a[title='Manage Submissions']:before {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  padding-right: 0.25em;
+  content: "\e028";
+}
+#nav-main ul .nav-actions a[title='Manage Submissions']:before:empty {
+  width: 1em;
+}
 #nav-main .nav li {
   border-right: 1px #ffffff solid;
 }
 #nav-main .nav li:first-child {
   border-left: 1px #ffffff solid;
-}
-#nav-main .nav li:last-child a:before {
-  position: relative;
-  top: 1px;
-  display: inline-block;
-  font-family: 'Glyphicons Halflings';
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  padding-left: 0.25em;
-  content: "\e022";
-}
-#nav-main .nav li:last-child a:before:empty {
-  width: 1em;
-}
-#nav-main .nav li a[title='Submit an Article']:before {
-  position: relative;
-  top: 1px;
-  display: inline-block;
-  font-family: 'Glyphicons Halflings';
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  padding-left: 0.25em;
-  content: "\e022";
-}
-#nav-main .nav li a[title='Submit an Article']:before:empty {
-  width: 1em;
 }
 #nav-main .navbar-toggle {
   float: left !important;
@@ -6749,7 +6761,7 @@ table.data td.value {
     margin-top: 271px;
     padding-top: 20px;
   }
-  #nav-main ul {
+  #nav-main .nav-container {
     width: 750px;
     padding: 0 15px;
     margin: auto;
@@ -6757,19 +6769,13 @@ table.data td.value {
   }
 }
 @media (min-width: 992px) {
-  #nav-main ul {
+  #nav-main .nav-container {
     width: 970px;
-    padding: 0 15px;
-    margin: auto;
-    float: none;
   }
 }
 @media (min-width: 1200px) {
-  #nav-main ul {
+  #nav-main .nav-container {
     width: 1170px;
-    padding: 0 15px;
-    margin: auto;
-    float: none;
   }
 }
 .excerpt.pull-left.span2 {

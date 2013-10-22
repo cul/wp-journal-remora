@@ -53,19 +53,30 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 						<span class="icon-bar"></span>
 					</button>
 				</div>
-				<div class="nav-collapse collapse">
+				<div class="nav-container">
+					<div class="nav-collapse collapse">
+							<?php 
+							wp_nav_menu( array(
+								'menu'       => 'main',
+								'theme_location' => 'main',
+								'depth'      => 2,
+								'container'  => false,
+								'menu_class' => 'nav navbar-nav nav-main',
+								'fallback_cb' => 'wp_page_menu',
+								'walker' => new wp_bootstrap_navwalker())
+							);
 
-					<?php 
-					wp_nav_menu( array(
-						'menu'       => 'main',
-						'theme_location' => 'main',
-						'depth'      => 2,
-						'container'  => false,
-						'menu_class' => 'nav navbar-nav',
-						'fallback_cb' => 'wp_page_menu',
-						'walker' => new wp_bootstrap_navwalker())
-					);
-					?>
+							wp_nav_menu( array(
+								'menu'       => 'actions',
+								'theme_location' => 'actions',
+								'depth'      => 2,
+								'container'  => false,
+								'menu_class' => 'nav navbar-nav nav-actions',
+								'fallback_cb' => 'wp_page_menu',
+								'walker' => new wp_bootstrap_navwalker())
+							);
+							?>
+					</div>
 				</div>
 			</nav>
 			<div id="breadcrumbs-main">

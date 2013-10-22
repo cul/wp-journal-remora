@@ -115,6 +115,42 @@ body {
 }
 
 #nav-main {
+
+	ul {
+		padding: 0 (@grid-gutter-width/2);
+		margin: auto;
+
+		&.nav-main, &.nav-actions {
+			clear: none;
+			width: auto;
+			padding: 0 !important;
+		}
+
+		&.nav-main { 
+			.pull-left;
+		}
+
+		&.nav-actions { 
+			.pull-right;
+
+			a[title='Submit an Article'] {
+				&:before { 
+					.glyphicon;
+					padding-right: 0.25em;
+					content: "\e022"; 
+				} 
+			}
+
+			a[title='Manage Submissions'] {
+				&:before { 
+					.glyphicon;
+					padding-right: 0.25em;
+					content: "\e028"; 
+				} 
+			}
+		}
+	}
+
 	.nav li {
 		border-right: 1px @body-bg solid;
 
@@ -122,12 +158,8 @@ body {
 			border-left:  1px @body-bg solid;
 		}
 
-		a[title='Submit an Article'] {
-			&:before { 
-				.glyphicon;
-				padding-right: 0.25em;
-				content: "\e022"; 
-			} 
+		.actions {
+			
 		}
 
 	}

@@ -21,14 +21,6 @@ get_header();
 ?>
 
 <div id="primary" class="c1-8">
-	<div class="well">
-		<p>This page is a magic page.</p>
-		<ul>
-			<li>It pulls up an OJS page in an iframe which displays all the content but doesn't scroll.</li>
-			<li>It allows the entire OJS submission process to happen without going to OJS.</li>
-			<li>If you're not logged in it provides the OJS login/register process which will also show up here.</li>
-		</ul>
-	</div>
 	<?php $remoraOJS->action_page('/author/submit', 'remora'); ?>
 </div><!-- #primary -->
 

@@ -108,7 +108,7 @@ function cfct_register_options() {
 					'label' => __("OJS Issue IDs for past issues", 'carrington'),
 					'cols' => 60,
 					'rows' => 5,
-					'help' => "<br /><span class=\"cfct-help\"> Enter one issue per line as {id}:Issue name.<p><b>Example:</b><pre>\n2: Vol 1, No 1 (2013)\n3: Vol 1, No 2 (2013)</pre></p>",
+					'help' => "<br /><span class=\"cfct-help\"> {ojs issue id}:Issue name<br/>One issue per line<br/>Headings can be created by not including an id.<p><b>Example:</b><pre>Issues in 2013\n78: Vol 5, No 1 (2013)\n3: Vol 5, No 2 (2013)\nIssues in 2012\n44:Vol 4, No 1 (2012)</pre></p>",
 					'name' => 'past_issues',
 				),
 				'about' => array(

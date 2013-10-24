@@ -91,7 +91,7 @@ if (! function_exists('cfct_theme_setup')) {
 		register_nav_menus(array(
 			'main' => 'Main Navigation',
 			'actions' => 'Actions'
-		));
+			));
 
 		/**
 		 * Add post formats
@@ -112,12 +112,12 @@ function cfct_widgets_init() {
 		'after_widget' => '</aside>',
 		'before_title' => '<h1 class="widget-title">',
 		'after_title' => '</h1>'
-	);
+		);
 	// Copy the following code and replace values to create more widget areas
 	register_sidebar(array_merge($sidebar_defaults, array(
 		'id' => 'sidebar-default',
 		'name' => __('Default Sidebar', 'carrington-blueprint'),
-	)));
+		)));
 }
 add_action( 'widgets_init', 'cfct_widgets_init' );
 
@@ -151,7 +151,7 @@ add_action('wp_enqueue_scripts', 'cfct_load_assets');
 // Register widgets
 // register Foo_Widget widget
 function register_chromeless_text_widget() {
-    register_widget( 'WP_Widget_Chromeless_Text' );
+	register_widget( 'WP_Widget_Chromeless_Text' );
 }
 add_action( 'widgets_init', 'register_chromeless_text_widget' );
 
@@ -180,9 +180,17 @@ function get_past_issues() {
 
 	foreach(explode("\n", cfct_get_option('cfct_past_issues')) as $issue) {
 		static $i = 0;
-		$iss = explode(':', $issue);
-		$past_issues[$i]->id = $iss[0];
-		$past_issues[$i]->title = $iss[1];
+		if(preg_match('#(\d+):(.+)#', $issue) ) {
+			$iss = explode(':', $issue);
+			$past_issues[$i]->type = "issue";
+			$past_issues[$i]->id = $iss[0];
+			$past_issues[$i]->title = $iss[1];
+		}
+		else {
+			$past_issues[$i]->type = "heading";
+			$past_issues[$i]->title = $issue;
+		}
+
 		$i++;
 	}
 	return $past_issues;
@@ -191,7 +199,26 @@ function get_past_issues() {
 function issue_selector(){
 
 	foreach(get_past_issues() as $issue) {
-		$options .= "<option value=\"{$issue->id}\">{$issue->title}</option>";
+		static $headings;
+
+		switch($issue->type){
+			case 'issue':
+			$options .= "<option value=\"{$issue->id}\">{$issue->title}</option>";
+			break;
+
+			case 'heading':
+			if(!$headings) {
+				$options .= "<optgroup label=\"{$issue->title}\">";
+				$headings = true;
+			}
+			else {
+				$options .= "</optgroup><optgroup label=\"{$issue->title}\">";
+			}
+			break;
+
+		}
+
+		if($headings) $options .="</optgroup>";
 	}
 	echo $options;
 }

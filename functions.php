@@ -174,3 +174,28 @@ include_once('functions/wp_bootstrap_navwalker.php'); // Adds a Bootstrap compli
 do_action('load_bootstrap_resources', false ); // Load Bootstrap resources
 add_action('wp_enqueue_scripts', 'cfct_load_assets');
 
+// Get past issues
+
+function get_past_issues() {
+
+	foreach(explode("\n", cfct_get_option('cfct_past_issues')) as $issue) {
+		static $i = 0;
+		$iss = explode(':', $issue);
+		$past_issues[$i]->id = $iss[0];
+		$past_issues[$i]->title = $iss[1];
+		$i++;
+	}
+	return $past_issues;
+
+}
+function issue_selector(){
+
+	foreach(get_past_issues() as $issue) {
+		$options .= "<option value=\"{$issue->id}\">{$issue->title}</option>";
+	}
+	echo $options;
+}
+
+
+
+

@@ -103,6 +103,14 @@ function cfct_register_options() {
 					'help' => '<br /><span class="cfct-help">'.__('The slug of the page being used to access the journal.', 'carrington').'</span>',
 					'class' => 'cfct-text-long',
 				),
+				'past_issues' => array(
+					'type' => 'textarea',
+					'label' => __("OJS Issue IDs for past issues", 'carrington'),
+					'cols' => 60,
+					'rows' => 5,
+					'help' => "<br /><span class=\"cfct-help\"> Enter one issue per line as {id}:Issue name.<p><b>Example:</b><pre>\n2: Vol 1, No 1 (2013)\n3: Vol 1, No 2 (2013)</pre></p>",
+					'name' => 'past_issues',
+				),
 				'about' => array(
 					'type' => 'textarea',
 					'label' => __('About text (shown in sidebar)', 'carrington'),

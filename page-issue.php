@@ -22,10 +22,14 @@ get_header();
 
 <div id="primary" class="c1-8">
 <?php
+	// Get the requested issue
 	$issue_id = $remoraOJS->get_requested_issue_id();
-
-	// If nothing else, fetch the current issue Table of Contents
 	$journal_page = $remoraOJS->get_issue_by_id($issue_id);
+
+	// If the requested issue doesn't exist
+	if(!$journal_page)
+		$journal_page = $remoraOJS->get_issue_by_id('current');
+
 	echo $remoraOJS->show_page($journal_page);
 	?>
 </div><!-- #primary -->

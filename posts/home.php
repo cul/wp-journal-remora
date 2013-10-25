@@ -24,50 +24,13 @@ get_header();
 
 	<section id="featured row clearfix">
 		<?php
-		$remoraOJS = (class_exists(Remora_OJS_Core)) ? new Remora_OJS_Core() : null;
-		$articles = array(9, 3, 5, 8);
-		$sectionImage = 'http://www.consiliencejournal.org/blog/wp-content/uploads/2012/06/MjPFeP1339472471.jpg';
-		foreach($articles as $article){
-			$abstract = $remoraOJS->get_abstract_by_id($article, array('excerpt_length'=> 24));
 
-			if (!$abstract) continue;
+		global $wp_query;
+		$wp_query = new WP_Query( array( 'post_type' => 'feature', 'orderby' => 'meta_value', 'meta_key' => 'current_feature' ) );
+		
+		cfct_template_file('content', 'type-feature');
 
-			echo '<article class="excerpt pull-left span2">
-			<header>
-			<img src="'.$sectionImage.'" style="height: 120px !important;" />
-			<h4 class="excerpt-title">
-			<a href="'.$abstract->link.'">'.$abstract->title.'</a>
-			</h4>
-			<div class="excerpt-authors byline">
-			'.$abstract->authors.'
-			</div>
-			</header>
-			<div class="excerpt-text">
-			'.$abstract->excerpt.'
-			</div>
-			<ul class="excerpt-galleys">';
-			
-			foreach($abstract->galleys as $galley) {
-				echo "<li>$galley</li>";
-			}
-			echo'
-			</ul>
-			</article>';
-
-			switch($sectionImage){
-				case 'http://www.consiliencejournal.org/blog/wp-content/uploads/2012/06/MjPFeP1339472471.jpg':
-				$sectionImage = 'http://www.consiliencejournal.org/blog/wp-content/uploads/2012/06/zNEAWS1339472372.jpg';
-				break;
-
-				case 'http://www.consiliencejournal.org/blog/wp-content/uploads/2012/06/zNEAWS1339472372.jpg';
-				$sectionImage = 'http://www.consiliencejournal.org/blog/wp-content/uploads/2012/06/kHIN2Y1339472935.jpg';
-				break;
-
-				case 'http://www.consiliencejournal.org/blog/wp-content/uploads/2012/06/kHIN2Y1339472935.jpg':
-				$sectionImage = 'http://www.consiliencejournal.org/blog/wp-content/uploads/2012/06/8EGGbd1339472243.jpg';
-				break;
-			}
-		}
+		
 		?>
 	</section>
 	<div class="clearfix">

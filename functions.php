@@ -22,7 +22,7 @@ define('CFCT_PATH', trailingslashit(TEMPLATEPATH));
  * Set this to "true" to turn on debugging mode.
  * Helps with development by showing the paths of the files loaded by Carrington.
  */
-define('CFCT_DEBUG', true);
+define('CFCT_DEBUG', false);
 
 /**
  * Theme version.
@@ -41,6 +41,7 @@ if (!(defined('CFCT_URL_VERSION'))) {
  * Includes
  */
 include_once(CFCT_PATH.'carrington-core/carrington.php');
+include_once('functions/helpers.php'); // Creates the Feature post type
 include_once(CFCT_PATH.'functions/site-utils.php'); // WP site utilities
 include_once('functions/Type_Feature.php'); // Creates the Feature post type
 include_once(CFCT_PATH.'functions/WP_Widget_Chromeless_Text.php'); // Chromeless Text Widget
@@ -241,13 +242,15 @@ function issue_selector(){
  * Returns array of features as WP_Post objects
  */
 function get_post_features(){
-	foreach (get_fields() as $key => $val) {
+	$fields = get_fields();
+
+	if(!$fields) return;
+
+	foreach ($fields as $key => $val) {
 		if(preg_match('#^featured_article_\d+#', $key) && $val )
 			$features[] = $val;
 	}
 
 	return $features;
 }
-
-
 

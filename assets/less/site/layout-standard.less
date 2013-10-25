@@ -237,9 +237,11 @@ img {
 	height: auto;
 }
 
-.feature.excerpt {
+.feature-excerpt {
 	.pull-left;
-	.span2;
+
+	width: percentage((3 / @grid-columns));
+	padding: 0 @padding-small-horizontal;
 
 	img {
 		height: 120px !important;

@@ -6531,15 +6531,19 @@ body .navbar-default {
   padding: 0 15px;
   margin: auto;
 }
-#nav-main ul .nav-main {
+#nav-main ul.nav-main,
+#nav-main ul.nav-actions {
+  clear: none;
+  width: auto;
+  padding: 0 !important;
+}
+#nav-main ul.nav-main {
   float: left !important;
-  width: 58.333333333333336%;
 }
-#nav-main ul .nav-actions {
+#nav-main ul.nav-actions {
   float: right !important;
-  width: 25%;
 }
-#nav-main ul .nav-actions a[title='Submit an Article']:before {
+#nav-main ul.nav-actions a[title='Submit an Article']:before {
   position: relative;
   top: 1px;
   display: inline-block;
@@ -6551,10 +6555,10 @@ body .navbar-default {
   padding-right: 0.25em;
   content: "\e022";
 }
-#nav-main ul .nav-actions a[title='Submit an Article']:before:empty {
+#nav-main ul.nav-actions a[title='Submit an Article']:before:empty {
   width: 1em;
 }
-#nav-main ul .nav-actions a[title='Manage Submissions']:before {
+#nav-main ul.nav-actions a[title='Manage Submissions']:before {
   position: relative;
   top: 1px;
   display: inline-block;
@@ -6566,7 +6570,7 @@ body .navbar-default {
   padding-right: 0.25em;
   content: "\e028";
 }
-#nav-main ul .nav-actions a[title='Manage Submissions']:before:empty {
+#nav-main ul.nav-actions a[title='Manage Submissions']:before:empty {
   width: 1em;
 }
 #nav-main .nav li {
@@ -6651,6 +6655,14 @@ body .navbar-default {
 img {
   max-width: 100%;
   height: auto;
+}
+.feature-excerpt {
+  float: left !important;
+  width: 33.33333333333333%;
+  padding: 0 10px;
+}
+.feature-excerpt img {
+  height: 120px !important;
 }
 /**
  * Small Screens
@@ -6777,10 +6789,6 @@ table.data td.value {
   #nav-main .nav-container {
     width: 1170px;
   }
-}
-.excerpt.pull-left.span2 {
-  width: 24%;
-  padding: 0 10px;
 }
 .clearfix {
   clear: both;

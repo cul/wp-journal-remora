@@ -21,34 +21,9 @@ get_header();
 ?>
 
 <div id="primary" class="c1-8">
-	<?php
-	$features = get_post_features();
-
-	// For the loop used, look in /loops
-	cfct_loop();
-
-	foreach($features as $feature) {
-		$title = $feature->post_title;
-		$link = $feature->guid;
-		$excerpt = $feature->post_excerpt;
-		$featured_image;
-		?>
-		<article class="excerpt">
-			<header>
-				<img src="<?php echo $featured_image; ?>" />
-				<h4 class="excerpt-title">
-					<a href="<?php echo $link; ?>"><?php echo $title; ?></a>
-				</h4>
-			</header>
-			<div class="excerpt-text">
-				<?php echo $excerpt; ?>
-			</div>
-	</article>';
-	<?
-}
-
-
-?>
+	<?php 
+	cfct_template_file('content', 'type-feature'); 
+	?>
 </div><!-- #primary -->
 
 <?php 

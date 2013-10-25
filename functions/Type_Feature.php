@@ -38,6 +38,7 @@ class Type_Feature {
                 'custom-fields', 
                 'page-attributes', 
                 'comments', 
+                'post-thumbnails'
                 ),
             'public' => true,
             'show_ui' => true,

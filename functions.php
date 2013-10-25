@@ -22,7 +22,7 @@ define('CFCT_PATH', trailingslashit(TEMPLATEPATH));
  * Set this to "true" to turn on debugging mode.
  * Helps with development by showing the paths of the files loaded by Carrington.
  */
-define('CFCT_DEBUG', false);
+define('CFCT_DEBUG', true);
 
 /**
  * Theme version.
@@ -42,6 +42,7 @@ if (!(defined('CFCT_URL_VERSION'))) {
  */
 include_once(CFCT_PATH.'carrington-core/carrington.php');
 include_once(CFCT_PATH.'functions/site-utils.php'); // WP site utilities
+include_once('functions/Type_Feature.php'); // Creates the Feature post type
 include_once(CFCT_PATH.'functions/WP_Widget_Chromeless_Text.php'); // Chromeless Text Widget
 include_once('functions/site-media-library.php'); // Adds WordPress-native media library functionality for themes
 
@@ -166,7 +167,9 @@ remove_filter( ‘the_excerpt’, ‘wpautop’ );
 
 
 
-//Bootstrap
+/**
+ * Bootstrap
+ */
 
 include_once('functions/bootstrap-resources.php'); // Adds Twitter Bootstrap functionality and styles
 include_once('functions/wp_bootstrap_navwalker.php'); // Adds a Bootstrap compliant nav walker
@@ -174,8 +177,11 @@ include_once('functions/wp_bootstrap_navwalker.php'); // Adds a Bootstrap compli
 do_action('load_bootstrap_resources', false ); // Load Bootstrap resources
 add_action('wp_enqueue_scripts', 'cfct_load_assets');
 
-// Get past issues
+/**
+ * Past Issues
+ */
 
+// Get past issues from the theme settings
 function get_past_issues() {
 
 	foreach(explode("\n", cfct_get_option('cfct_past_issues')) as $issue) {
@@ -196,6 +202,8 @@ function get_past_issues() {
 	return $past_issues;
 
 }
+
+// Get past issues as options for a select box
 function issue_selector(){
 
 	foreach(get_past_issues() as $issue) {
@@ -223,6 +231,23 @@ function issue_selector(){
 	echo $options;
 }
 
+/**
+ * Features
+ */
+
+/**
+ * Gets the features associated with a feature page
+ *
+ * Returns array of features as WP_Post objects
+ */
+function get_post_features(){
+	foreach (get_fields() as $key => $val) {
+		if(preg_match('#^featured_article_\d+#', $key) && $val )
+			$features[] = $val;
+	}
+
+	return $features;
+}
 
 
 

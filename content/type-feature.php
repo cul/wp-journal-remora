@@ -19,6 +19,7 @@ if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 the_post(); // Doing this here because of the strange ways we call this file
 $features = get_post_features();
+$content = qa_to_html( get_the_content() );
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix', 'featured'); ?>>
 	<header class="entry-header">
@@ -27,7 +28,8 @@ $features = get_post_features();
 
 	<section id="entry-content" class="entry-content">
 		<?php
-		the_content();
+		echo $content;
+
 		?>
 	</section> <!-- #entry-content -->
 

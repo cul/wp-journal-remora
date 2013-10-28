@@ -158,4 +158,80 @@ function break_to_html($str, $break_type = 'br'){
 	return $converted;
 }
 
+/**
+ * Converts text QA to HTML QA
+ *
+ * @str - String containing QA
+ * @match_filter - Function name to use to filter matches
+ * 
+ * Returns html-formatted QA
+ */
+function qa_to_html($str, $match_filter = null) {
+
+	$lines = explode("\n", $str);
+	$q_rx = "/^[\t ]*Q\.\s/i";
+	$a_rx = "/^[\t ]*A\.\s/i";
+	$close_container_rx = "/end qa/i";
+
+	$qa_container = 'dl';
+	$q_tag = 'dt';
+	$a_tag = 'dd';
+	$html;
+	
+
+	foreach($lines as $line) {
+		static $container_opened = false;
+		if(preg_match($q_rx, $line)){
+			if(!$container_opened) {
+				$container_opened = true;
+				$html .= "\n<{$qa_container}>";
+			}
+			$filtered_line = (function_exists($match_filter)) ?  $match_filter($line) : $line;
+			$html .= "\n<{$q_tag}>".preg_replace($q_rx, "", $filtered_line)."</{$q_tag}>";
+		}
+		elseif(preg_match($a_rx, $line)){
+			if(!$container_opened) {
+				$container_opened = true;
+				$html .= "\n<{$qa_container}>";
+			}
+			$filtered_line = (function_exists($match_filter)) ?  $match_filter($line) : $line;
+			$html .= "\n<{$a_tag}>".preg_replace($a_rx, "", $filtered_line)."</{$a_tag}>";
+		}
+		elseif($container_opened && preg_match($close_container_rx, $line)){
+			$container_opened = false;
+			$html .= "\n</{$qa_container}>\n";
+		}
+		else $html .= "\n{$line}";
+	}
+
+	$html .= "\n</{$qa_container}>\n";
+
+	return $html;
+}
+
+/**
+ * Converts html breaks to markdown breaks
+ *
+ * @str Html string
+ * 
+ * Returns String with markdown-style breaks
+ */
+function convert_html_breaks($str){
+
+	// Convert break elements to newline elements (\n)
+	$converted = preg_replace("/<br[\/\s]*>/i", "\n", $str);
+
+	// Convert paragraph elements to markdown paragraph elements (\n\n)
+	if( preg_replace("/<p[^>]*>/i", "\n\n", $converted) ) {
+		$converted = preg_replace("/<\/p>/i", "\n", $converted);
+	}
+	return $converted;
+}
+
+
+
+
+
+
+
 

@@ -38,12 +38,23 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 	<div id="masthead-wallpaper"></div>
 	<div class="container grid">
 		<header id="masthead" class="row site-header clearfix">
-			<?php
-			// Display the logo with the site name as alt text, otherwise put the logo as the heading
-			$siteLogo = (cfct_get_option('cfct_logo')) ? '<img src="'.cfct_get_option('cfct_logo').'" alt="'.get_bloginfo('name').'" />' : get_bloginfo('name');
-			?>
-			
-			<h1 id="site-name"><a href="<?php echo home_url('/'); ?>" title="<?php _e('Home', 'carrington-blueprint'); ?>"><?php echo $siteLogo; ?></a></h1>
+			<div id="branding">
+				<?php
+				$siteLogo = (cfct_get_option('cfct_logo')) ? '<img src="'.cfct_get_option('cfct_logo').'" alt="'.get_bloginfo('name').'" />' : get_bloginfo('name');
+				$tagline = break_to_html( nbsp_to_break(get_bloginfo('description') ) );
+				$parentBranding = (cfct_get_option('cfct_parent_logo')) ? '<div class="branding-parent"><img src="'.cfct_get_option('cfct_parent_logo').'" alt="'.cfct_get_option('cfct_parent_name').'" /></div>' : "";
+				?>
+
+				<h1 id="site-name">
+					<a href="<?php echo home_url('/'); ?>" title="<?php _e('Home', 'carrington-blueprint'); ?>"><?php echo $siteLogo; ?></a>
+				</h1>
+				<h2 class="tagline">
+					<?php echo $tagline; ?>
+				</h2>
+				<?php echo $parentBranding; ?>
+
+			</div><!-- /.branding -->
+
 			<nav id="nav-main" class="navbar navbar-default nav-stacked" role="navigation">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
@@ -55,27 +66,27 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 				</div>
 				<div class="nav-container">
 					<div class="nav-collapse collapse">
-							<?php 
-							wp_nav_menu( array(
-								'menu'       => 'main',
-								'theme_location' => 'main',
-								'depth'      => 2,
-								'container'  => false,
-								'menu_class' => 'nav navbar-nav nav-main',
-								'fallback_cb' => 'wp_page_menu',
-								'walker' => new wp_bootstrap_navwalker())
-							);
+						<?php 
+						wp_nav_menu( array(
+							'menu'       => 'main',
+							'theme_location' => 'main',
+							'depth'      => 2,
+							'container'  => false,
+							'menu_class' => 'nav navbar-nav nav-main',
+							'fallback_cb' => 'wp_page_menu',
+							'walker' => new wp_bootstrap_navwalker())
+						);
 
-							wp_nav_menu( array(
-								'menu'       => 'actions',
-								'theme_location' => 'actions',
-								'depth'      => 2,
-								'container'  => false,
-								'menu_class' => 'nav navbar-nav nav-actions',
-								'fallback_cb' => 'wp_page_menu',
-								'walker' => new wp_bootstrap_navwalker())
-							);
-							?>
+						wp_nav_menu( array(
+							'menu'       => 'actions',
+							'theme_location' => 'actions',
+							'depth'      => 2,
+							'container'  => false,
+							'menu_class' => 'nav navbar-nav nav-actions',
+							'fallback_cb' => 'wp_page_menu',
+							'walker' => new wp_bootstrap_navwalker())
+						);
+						?>
 					</div>
 				</div>
 			</nav>

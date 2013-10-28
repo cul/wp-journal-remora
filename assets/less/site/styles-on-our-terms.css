@@ -579,7 +579,7 @@ dd {
   }
   .dl-horizontal dd {
     margin-left: 180px;
-    clear: both;
+    clear: both !important;
   }
   .dl-horizontal dd:before,
   .dl-horizontal dd:after {
@@ -705,7 +705,7 @@ pre code {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
-  clear: both;
+  clear: both !important;
 }
 .container:before,
 .container:after {
@@ -734,7 +734,7 @@ pre code {
 .row {
   margin-left: -15px;
   margin-right: -15px;
-  clear: both;
+  clear: both !important;
 }
 .row:before,
 .row:after {
@@ -1843,7 +1843,7 @@ textarea.input-lg {
 .form-horizontal .form-group {
   margin-left: -15px;
   margin-right: -15px;
-  clear: both;
+  clear: both !important;
 }
 .form-horizontal .form-group:before,
 .form-horizontal .form-group:after {
@@ -3023,7 +3023,7 @@ input[type="button"].btn-block {
   margin-left: -1px;
 }
 .btn-toolbar {
-  clear: both;
+  clear: both !important;
 }
 .btn-toolbar:before,
 .btn-toolbar:after {
@@ -3141,7 +3141,7 @@ input[type="button"].btn-block {
   max-width: 100%;
 }
 .btn-group-vertical > .btn-group {
-  clear: both;
+  clear: both !important;
 }
 .btn-group-vertical > .btn-group:before,
 .btn-group-vertical > .btn-group:after {
@@ -3358,7 +3358,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   margin-bottom: 0;
   padding-left: 0;
   list-style: none;
-  clear: both;
+  clear: both !important;
 }
 .nav:before,
 .nav:after {
@@ -3565,7 +3565,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   }
 }
 .tabbable {
-  clear: both;
+  clear: both !important;
 }
 .tabbable:before,
 .tabbable:after {
@@ -3618,7 +3618,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   min-height: 50px;
   margin-bottom: 20px;
   border: 1px solid transparent;
-  clear: both;
+  clear: both !important;
 }
 .navbar:before,
 .navbar:after {
@@ -3650,7 +3650,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-header {
-  clear: both;
+  clear: both !important;
 }
 .navbar-header:before,
 .navbar-header:after {
@@ -3688,7 +3688,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   padding-left: 15px;
   border-top: 1px solid transparent;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  clear: both;
+  clear: both !important;
   -webkit-overflow-scrolling: touch;
 }
 .navbar-collapse:before,
@@ -4265,7 +4265,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   margin: 20px 0;
   list-style: none;
   text-align: center;
-  clear: both;
+  clear: both !important;
 }
 .pager:before,
 .pager:after {
@@ -4766,7 +4766,7 @@ a.list-group-item:focus {
 }
 .panel-body {
   padding: 15px;
-  clear: both;
+  clear: both !important;
 }
 .panel-body:before,
 .panel-body:after {
@@ -5123,7 +5123,7 @@ body.modal-open,
   padding: 19px 20px 20px;
   text-align: right;
   border-top: 1px solid #e5e5e5;
-  clear: both;
+  clear: both !important;
 }
 .modal-footer:before,
 .modal-footer:after {
@@ -5962,7 +5962,7 @@ body.modal-open,
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 .clearfix {
-  clear: both;
+  clear: both !important;
 }
 .clearfix:before,
 .clearfix:after {
@@ -6427,6 +6427,9 @@ td.visible-print {
  * Built off of Bootstrap v. 3
  *
  */
+.clearfix {
+  clear: both !important;
+}
 /**
  * Basic layout
  *
@@ -6441,6 +6444,10 @@ body > .container {
   -webkit-box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.9);
   box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.9);
 }
+body > .container img {
+  max-height: 100%;
+  max-width: 100%;
+}
 body > .container #masthead {
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f1f0f0), color-stop(85%, #ffffff), to(#ffffff));
   background-image: -webkit-linear-gradient(#f1f0f0, #ffffff 85%, #ffffff);
@@ -6449,8 +6456,20 @@ body > .container #masthead {
   background-repeat: no-repeat;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff1f0f0', endColorstr='#ffffffff', GradientType=0);
 }
-body > .container #masthead h1 {
-  text-align: center;
+body > .container #masthead #branding {
+  margin: auto;
+}
+body > .container #masthead #site-name {
+  display: inline-block;
+  text-align: auto;
+  width: 200px;
+}
+body > .container #masthead .tagline {
+  display: inline-block;
+}
+body > .container #masthead .branding-parent {
+  float: right;
+  height: 150px;
 }
 body > .container #main header {
   padding-bottom: 6px;
@@ -6512,6 +6531,9 @@ body > .container #footer hr {
 body code {
   white-space: pre-wrap;
 }
+body section + section {
+  margin-top: 30px;
+}
 body .byline {
   font-size: 12px;
   font-style: italic;
@@ -6528,20 +6550,39 @@ body .navbar-default {
   border-bottom-left-radius: 0px;
 }
 #nav-main ul {
-  padding: 0 15px;
+  clear: both !important;
+  float: none;
+  padding: 5px 15px;
   margin: auto;
+}
+#nav-main ul:before,
+#nav-main ul:after {
+  content: " ";
+  /* 1 */
+
+  display: table;
+  /* 2 */
+
+}
+#nav-main ul:after {
+  clear: both;
+}
+#nav-main ul:before,
+#nav-main ul:after {
+  content: " ";
+  /* 1 */
+
+  display: table;
+  /* 2 */
+
+}
+#nav-main ul:after {
+  clear: both;
 }
 #nav-main ul.nav-main,
 #nav-main ul.nav-actions {
   clear: none;
   width: auto;
-  padding: 0 !important;
-}
-#nav-main ul.nav-main {
-  float: left !important;
-}
-#nav-main ul.nav-actions {
-  float: right !important;
 }
 #nav-main ul.nav-actions a[title='Submit an Article']:before {
   position: relative;
@@ -6572,12 +6613,6 @@ body .navbar-default {
 }
 #nav-main ul.nav-actions a[title='Manage Submissions']:before:empty {
   width: 1em;
-}
-#nav-main .nav li {
-  border-right: 1px #ffffff solid;
-}
-#nav-main .nav li:first-child {
-  border-left: 1px #ffffff solid;
 }
 #nav-main .navbar-toggle {
   float: left !important;
@@ -6656,14 +6691,6 @@ img {
   max-width: 100%;
   height: auto;
 }
-.feature-excerpt {
-  float: left !important;
-  width: 33.33333333333333%;
-  padding: 0 10px;
-}
-.feature-excerpt img {
-  height: 120px !important;
-}
 /**
  * Small Screens
  * Columns, offsets, pushes, and pulls for the small device range, from phones
@@ -6675,6 +6702,45 @@ img {
   }
   body > .container #secondary {
     padding: 10px 16px 10px;
+  }
+  body > .container #nav-main {
+    clear: both !important;
+  }
+  body > .container #nav-main:before,
+  body > .container #nav-main:after {
+    content: " ";
+    /* 1 */
+  
+    display: table;
+    /* 2 */
+  
+  }
+  body > .container #nav-main:after {
+    clear: both;
+  }
+  body > .container #nav-main:before,
+  body > .container #nav-main:after {
+    content: " ";
+    /* 1 */
+  
+    display: table;
+    /* 2 */
+  
+  }
+  body > .container #nav-main:after {
+    clear: both;
+  }
+  body > .container #nav-main.nav-main {
+    float: left !important;
+  }
+  body > .container #nav-main.nav-actions {
+    float: right !important;
+  }
+  body > .container .nav li {
+    border-right: 1px #ffffff solid;
+  }
+  body > .container .nav li:first-child {
+    border-left: 1px #ffffff solid;
   }
 }
 /** 
@@ -6773,7 +6839,8 @@ table.data td.value {
     margin-top: 271px;
     padding-top: 20px;
   }
-  #nav-main .nav-container {
+  #nav-main .nav-container,
+  #nav-main #branding {
     width: 750px;
     padding: 0 15px;
     margin: auto;
@@ -6781,27 +6848,23 @@ table.data td.value {
   }
 }
 @media (min-width: 992px) {
-  #nav-main .nav-container {
+  #nav-main .nav-container,
+  #branding {
     width: 970px;
   }
 }
 @media (min-width: 1200px) {
-  #nav-main .nav-container {
+  #nav-main .nav-container,
+  #branding {
     width: 1170px;
   }
 }
-.clearfix {
-  clear: both;
-}
-.panel-group .panel-default > .panel-heading + .panel-collapse .panel-body {
-  border-top: none;
-}
-.panel-group .panel {
-  padding-bottom: 0;
-}
-.panel-group .panel-heading {
-  margin-bottom: 0;
-}
+/**
+ * Styles for On Our Terms Widgets
+ *
+ * Built off of Bootstrap v. 3
+ *
+ */
 .widget_text_chromeless {
   padding: 0 !important;
 }
@@ -6811,4 +6874,34 @@ table.data td.value {
 #sidebarTwitterWidget iframe {
   width: 100% !important;
   min-width: 1px !important;
+}
+/**
+ * Featured Articles
+ * Styles for On Our Terms 
+ *
+ * Built off of Bootstrap v. 3
+ *
+ */
+.feature-excerpt {
+  padding: 30px 10px;
+}
+.feature-excerpt img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+@media (min-width: 768px) {
+  .feature-excerpt {
+    padding: 20px 16px;
+    float: left !important;
+    width: 50%;
+  }
+}
+@media (min-width: 992px) {
+  .feature-excerpt {
+    width: 25%;
+    padding: 20px 10px;
+  }
+}
+@media (min-width: 1200px) {
+  
 }

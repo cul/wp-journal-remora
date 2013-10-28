@@ -5,7 +5,9 @@
  *
  */
 
-
+ .clearfix {
+ 	clear:both !important;
+ }
 /**
  * Basic layout
  *
@@ -21,11 +23,39 @@ body {
 		background: @body-bg;
 		.box-shadow(0px 0px 7px rgba(0,0,0,0.9));
 
+		img {
+			max-height: 100%;
+			max-width: 100%;
+		}
+
 		#masthead {
 			#gradient > .vertical-three-colors(@start-color: lighten(@navbar-default-bg, 8%); @mid-color: @body-bg; @color-stop: 85%;  @end-color: @body-bg);
 
-			h1 {
-				text-align: center;
+			#branding {
+				margin: auto;
+			}
+
+			#site-name {
+				display: inline-block;
+
+				text-align: auto;
+				width: 200px;
+			}
+
+			.tagline {
+				display: inline-block;
+				font-family: @font-family-sans-serif;
+				font-weight: 100;
+				font-size: 28px;
+				text-align: left;
+				padding-left: 50px;
+				vertical-align: bottom;
+			}
+
+			.branding-parent {
+				float: right;
+				height: 150px;
+				margin-top: 30px;
 			}
 		}
 
@@ -98,6 +128,10 @@ body {
 		white-space: pre-wrap;
 	}
 
+	section + section {
+		margin-top: @padding-large-vertical*3;
+	}
+
 	.byline {
 		font-size: @byline-font-size;
 		font-style: @byline-font-style;
@@ -117,21 +151,17 @@ body {
 #nav-main {
 
 	ul {
-		padding: 0 (@grid-gutter-width/2);
+		.clearfix;
+		float: none;
+		padding: @padding-small-vertical (@grid-gutter-width/2);
 		margin: auto;
 
 		&.nav-main, &.nav-actions {
 			clear: none;
 			width: auto;
-			padding: 0 !important;
-		}
-
-		&.nav-main { 
-			.pull-left;
 		}
 
 		&.nav-actions { 
-			.pull-right;
 
 			a[title='Submit an Article'] {
 				&:before { 
@@ -149,19 +179,6 @@ body {
 				} 
 			}
 		}
-	}
-
-	.nav li {
-		border-right: 1px @body-bg solid;
-
-		&:first-child {
-			border-left:  1px @body-bg solid;
-		}
-
-		.actions {
-			
-		}
-
 	}
 
 	.navbar-toggle {
@@ -237,16 +254,6 @@ img {
 	height: auto;
 }
 
-.feature-excerpt {
-	.pull-left;
-
-	width: percentage((3 / @grid-columns));
-	padding: 0 @padding-small-horizontal;
-
-	img {
-		height: 120px !important;
-	}
-}
 
 /**
  * Small Screens
@@ -265,9 +272,34 @@ img {
  			padding: @padding-small-horizontal @padding-large-horizontal @padding-large-vertical;
 
  		}
- 	}
 
+ 		#nav-main {
+ 			.clearfix;
+
+ 			&.nav-main { 
+ 				.pull-left;
+ 			}
+
+ 			&.nav-actions { 
+ 				.pull-right;
+ 			}
+ 		}
+
+ 		.nav li {
+ 			border-right: 1px @body-bg solid;
+
+ 			&:first-child {
+ 				border-left:  1px @body-bg solid;
+ 			}
+
+ 			.actions {
+
+ 			}
+
+ 		}
+ 	}
  }
+
 
  /** 
  * Medium grid

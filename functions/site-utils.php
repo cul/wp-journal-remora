@@ -62,7 +62,7 @@ function get_highlight_image($size = null){
 }
 
 function highlight_image($size = null) {
-	 echo get_highlight_image($size);
+	echo get_highlight_image($size);
 }
 
 /**
@@ -119,6 +119,43 @@ function author_image($size){
 	echo get_post_author_image($size);
 }
 
+/**
+ * Convert non-breaking space to a forced break
+ *
+ * @str - String to convert
+ *
+ * Returns string with non-breaking space converted to newlines
+ */
+function nbsp_to_break($str) {
 
+	$converted = preg_replace('/\xC2\xA0/', "\n", $str);
+
+	return $converted;
+}
+
+/**
+ * Convert break to html break
+ *
+ * @str - String to convert
+ * @break_type - Optional break type, default: br
+ *
+ * Returns string with newlines converted to breaks
+ */
+function break_to_html($str, $break_type = 'br'){
+
+	if ($break_type != "br"){
+		$before = "<{$break_type}>";
+		$after = "</{$break_type}"; 
+	}
+	else {
+		$before = null;
+		$after = "<{$break_type}/>";
+	}
+
+	// TODO: Refine replace to allow placing elements before and after
+	$converted = preg_replace('/[\n|\r]/', "{$after}", $str);
+
+	return $converted;
+}
 
 

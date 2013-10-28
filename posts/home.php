@@ -21,26 +21,40 @@ get_header();
 ?>
 
 <div id="primary" class="c1-8">
+	<article>
+		<section id="introduction">
+			<?php
+			$the_query = new WP_Query( 'pagename=introduction' );
+			while ( $the_query->have_posts() ) :
+				$the_query->the_post();
+			?>
+			<header>
+				<h1 class="entry-title"><?php the_title(); ?></h1>
+			</header>
+			<?php 
+			the_content();
+			endwhile;
+			wp_reset_postdata();
+			?>
+		</section>
+		<section id="featured" class="featured">
+			<?php
 
-	<section id="featured row clearfix">
-		<?php
+			global $wp_query;
+			$wp_query = new WP_Query( array( 'post_type' => 'feature', 'orderby' => 'meta_value', 'meta_key' => 'current_feature' ) );
 
-		global $wp_query;
-		$wp_query = new WP_Query( array( 'post_type' => 'feature', 'orderby' => 'meta_value', 'meta_key' => 'current_feature' ) );
-		
-		cfct_template_file('content', 'type-feature');
+			cfct_template_file('content', 'type-feature');
 
-		
-		?>
-	</section>
-	<div class="clearfix">
-		<?php
-		cfct_loop();
-		cfct_misc('nav-posts');
-		?>
+			?>
+		</section>
+		<div class="clearfix">
+			<?php
+			cfct_loop();
+			cfct_misc('nav-posts');
+			?>
 
-	</div>
-
+		</div>
+	</article>
 </div><!-- #primary -->
 
 <?php

@@ -16,37 +16,22 @@
 @import "layout-standard.less";
 @import "layout-header-full-width.less";
 
+// Type styling
+@import "widgets.less";
+@import "features.less";
+
 // Hacky
 
-.clearfix {
-	clear: both;
-}
+// .panel-group { 
 
-.panel-group { 
+// 	.panel-default > .panel-heading + .panel-collapse .panel-body {
+// 		border-top: none;
+// 	}
+// 	.panel {
+// 		padding-bottom: 0;
+// 	}
 
-	.panel-default > .panel-heading + .panel-collapse .panel-body {
-		border-top: none;
-	}
-	.panel {
-		padding-bottom: 0;
-	}
-
-	.panel-heading {
-		margin-bottom: 0;
-	}
-}
-
-// Widgets
-
-.widget_text_chromeless {
-		padding: 0 !important;
-}
-
-#sidebarTwitterWidget {
-	padding: 0 !important;
-
-	iframe {
-		width: 100% !important;
-		min-width: 1px !important;
-	}
-}
+// 	.panel-heading {
+// 		margin-bottom: 0;
+// 	}
+// }

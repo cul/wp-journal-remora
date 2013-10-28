@@ -89,6 +89,18 @@ function cfct_register_options() {
                     'label' => __('Logo', 'carrington'),
                     'name' => 'logo',
                 ),
+                'parent_name' => array(
+					'type' => 'text',
+					'label' => __('Parent organization name', 'carrington'),
+					'name' => 'parent_name',
+					'help' => '<br /><span class="cfct-help">'.__('(Name of the parent organization)', 'carrington').'</span>',
+					'class' => 'cfct-text-long',
+				),
+                'parent_logo' => array(
+                    'type' => 'media',
+                    'label' => __('Parent Organization Logo', 'carrington'),
+                    'name' => 'parent_logo',
+                ),
 				'ojs_url' => array(
 					'type' => 'text',
 					'label' => __('OJS Path', 'carrington'),

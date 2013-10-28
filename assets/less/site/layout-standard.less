@@ -15,6 +15,7 @@
  */
 
 // Extra-small styles
+
 body {
 	background: @body-bg;
 	font-weight: @font-weight-base;
@@ -32,31 +33,35 @@ body {
 			#gradient > .vertical-three-colors(@start-color: lighten(@navbar-default-bg, 8%); @mid-color: @body-bg; @color-stop: 85%;  @end-color: @body-bg);
 
 			#branding {
+
 				margin: auto;
 				padding: @padding-small-vertical @padding-small-horizontal;
-			}
 
-			#site-name {
-				display: inline-block;
+				#site-name {
+					display: inline-block;
+					width: 200px;
 
-				text-align: auto;
-				width: 200px;
-			}
+					text-align: auto;
+				}
 
-			.tagline {
-				display: block;
-				font-family: @font-family-sans-serif;
-				font-weight: 100;
-				font-size: 28px;
-				text-align: left;
-				vertical-align: bottom;
-			}
+				.tagline {
+					display: inline-block;
+					padding-left: @padding-small-horizontal;
+					position:relative;
+					vertical-align: bottom;
 
-			.branding-parent {
-				position: absolute;
-				top: 0;
-				right: 0;
-				width: 110px;
+					font-family: @font-family-sans-serif;
+					font-weight: 100;
+					font-size: 28px;
+					text-align: left;
+				}
+
+				.branding-parent {
+					position: absolute;
+					top: 0;
+					right: @padding-small-horizontal;
+					width: 100px;
+				}
 			}
 		}
 
@@ -81,6 +86,7 @@ body {
 			#primary {
 				padding: @padding-small-vertical @padding-small-horizontal;
 			}
+
 			#secondary {
 
 				padding: 0;
@@ -102,7 +108,7 @@ body {
 					background: @aside-bg;
 					font-size: @aside-font-size-base;
 
-					padding: @padding-small-vertical @padding-small-horizontal;
+					padding: @padding-large-vertical @padding-small-horizontal;
 					margin-bottom: @padding-base-vertical;
 
 					h1 {
@@ -254,6 +260,8 @@ img {
 	height: auto;
 }
 
+body.admin-bar >.container #masthead #branding .branding-parent { top: 39px; }
+
 
 /**
  * Small Screens
@@ -278,6 +286,9 @@ img {
 
  			#branding {
  				margin: auto;
+
+ 				.branding-parent {
+ 				}
  			}
 
  			#site-name {
@@ -288,30 +299,17 @@ img {
  			}
 
  			.tagline {
- 				display: inline-block;
- 				font-family: @font-family-sans-serif;
- 				font-weight: 100;
- 				font-size: 28px;
- 				text-align: left;
- 				padding-left: 50px;
- 				vertical-align: bottom;
+ 				padding-left: 1%;
  			}
 
- 			.branding-parent {
- 				position: relative;
- 				float: right;
- 				margin-top: 47px;
- 				text-align: center;
- 				width: percentage((4 / @grid-columns));
-
- 				img {
- 					width: 130px;
- 				}
- 			}
  		}
 
  		#nav-main {
- 			.clearfix;
+
+ 			ul {
+ 				.clearfix;
+ 				padding: 0 (@grid-gutter-width/2);
+ 			}
 
  			& ul#nav-menu { 
  				.pull-left;
@@ -335,7 +333,43 @@ img {
 
  		}
  	}
+ 	body.admin-bar >.container #masthead #branding .branding-parent { top: 14px; }
  }
+
+/** 
+ * Medium small grid
+ *
+ * Columns, offsets, pushes, and pulls for the small desktop device range.
+ */
+
+ @media (min-width: @screen-ms-min) {
+
+ 	body {
+ 		background: @athenaCenter;
+
+ 		& > .container {
+
+ 			#masthead #branding { 
+
+ 				.branding-parent {
+ 					position: relative;
+ 					float: right;
+ 					top: 0px;
+ 					right: inherit;
+
+ 					width: 130px;
+ 					margin-top: 47px;
+
+ 					text-align: right;
+
+ 				}
+ 			}
+ 		}
+ 	}
+ 	body.admin-bar >.container #masthead #branding .branding-parent { top: 0; }
+
+ }
+ 
 
 
  /** 
@@ -350,6 +384,14 @@ img {
  		background: @athenaCenter;
 
  		& > .container {
+
+ 			#masthead #branding {
+
+ 				.branding-parent {
+ 					width: percentage((3 / @grid-columns));
+ 					img { width: 130px; }
+ 				}
+ 			}
 
  			#main {
  				#primary {
@@ -381,7 +423,9 @@ img {
  				}
  			}
  		}
+
  	}
+ 	body.admin-bar >.container #masthead #branding .branding-parent { top: auto; }
 
  }
 
@@ -392,8 +436,16 @@ img {
  */
  @media (min-width: @screen-lg-min) {
 
+ 	body > .container  {
 
+ 		#masthead #branding {
+ 			.branding-parent {
+ 				width: percentage((4 / @grid-columns));
+ 				text-align: center;
+ 			}
 
+ 		}
+ 	}
  }
 
 
@@ -407,7 +459,7 @@ img {
 
   // Fix OJS forms causing the iframe to misbehave at small sizes
   table.data {
-  	td{
+  	td {
   		&.label {
   			display: block;
   			width: 100%;

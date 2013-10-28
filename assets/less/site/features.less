@@ -9,10 +9,17 @@
 // Extra-small styles
 .feature-excerpt {
 	padding: @padding-large-vertical*3 @padding-small-horizontal;
+	clear: both;
 
 	img {
-		width: 100%;
-		margin-bottom: @padding-large-vertical;
+		width: 30%;
+		float:left;
+		padding-right: @padding-base-horizontal;
+	}
+
+	.excerpt-text {
+		width: 70%;
+		float:right;
 	}
 }
 
@@ -20,10 +27,18 @@
 // Small styles
 
 @media (min-width: @screen-sm-min) {
+
 	.feature-excerpt {
+		clear: none;
 		padding: @padding-large-vertical*2 @padding-large-horizontal;
 		.pull-left;
 		width: percentage((6 / @grid-columns));
+
+		img {
+			width: 100%;
+			margin-bottom: @padding-large-vertical;
+			padding: auto;
+		}
 	}
 }
 

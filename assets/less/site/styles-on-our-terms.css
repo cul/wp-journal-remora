@@ -6457,27 +6457,30 @@ body > .container #masthead {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff1f0f0', endColorstr='#ffffffff', GradientType=0);
 }
 body > .container #masthead #branding {
+  background: purple;
   margin: auto;
   padding: 5px 10px;
 }
-body > .container #masthead #site-name {
+body > .container #masthead #branding #site-name {
   display: inline-block;
-  text-align: auto;
   width: 200px;
+  text-align: auto;
 }
-body > .container #masthead .tagline {
-  display: block;
+body > .container #masthead #branding .tagline {
+  display: inline-block;
+  padding-left: 10px;
+  position: relative;
+  vertical-align: bottom;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 100;
   font-size: 28px;
   text-align: left;
-  vertical-align: bottom;
 }
-body > .container #masthead .branding-parent {
+body > .container #masthead #branding .branding-parent {
   position: absolute;
   top: 0;
-  right: 0;
-  width: 110px;
+  right: 10px;
+  width: 100px;
 }
 body > .container #main header {
   padding-bottom: 6px;
@@ -6522,7 +6525,7 @@ body > .container #main #secondary ul li a {
 body > .container #main #secondary .widget {
   background: #dddbdb;
   font-size: 13px;
-  padding: 5px 10px;
+  padding: 10px 10px;
   margin-bottom: 6px;
 }
 body > .container #main #secondary .widget h1 {
@@ -6698,6 +6701,9 @@ img {
   max-width: 100%;
   height: auto;
 }
+body.admin-bar > .container #masthead #branding .branding-parent {
+  top: 39px;
+}
 /**
  * Small Screens
  * Columns, offsets, pushes, and pulls for the small device range, from phones
@@ -6720,6 +6726,16 @@ img {
   }
   body > .container #masthead #branding {
     margin: auto;
+    background: yellow;
+  }
+  body > .container #masthead #branding .branding-parent {
+    top: 0px;
+    position: relative;
+    float: right;
+    margin-top: 47px;
+    text-align: right;
+    width: 138px;
+    right: inherit;
   }
   body > .container #masthead #site-name {
     display: inline-block;
@@ -6727,25 +6743,14 @@ img {
     width: 200px;
   }
   body > .container #masthead .tagline {
-    display: inline-block;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: 100;
-    font-size: 28px;
-    text-align: left;
-    padding-left: 50px;
-    vertical-align: bottom;
+    padding-left: 1%;
   }
-  body > .container #masthead .branding-parent {
-    display: relative;
-    float: right;
-    width: 150px;
-    margin-top: 30px;
-  }
-  body > .container #nav-main {
+  body > .container #nav-main ul {
     clear: both;
+    padding: 0 15px;
   }
-  body > .container #nav-main:before,
-  body > .container #nav-main:after {
+  body > .container #nav-main ul:before,
+  body > .container #nav-main ul:after {
     content: " ";
     /* 1 */
   
@@ -6753,11 +6758,11 @@ img {
     /* 2 */
   
   }
-  body > .container #nav-main:after {
+  body > .container #nav-main ul:after {
     clear: both;
   }
-  body > .container #nav-main:before,
-  body > .container #nav-main:after {
+  body > .container #nav-main ul:before,
+  body > .container #nav-main ul:after {
     content: " ";
     /* 1 */
   
@@ -6765,7 +6770,7 @@ img {
     /* 2 */
   
   }
-  body > .container #nav-main:after {
+  body > .container #nav-main ul:after {
     clear: both;
   }
   body > .container #nav-main ul#nav-menu {
@@ -6780,6 +6785,22 @@ img {
   body > .container .nav li:first-child {
     border-left: 1px #ffffff solid;
   }
+  body.admin-bar > .container #masthead #branding .branding-parent {
+    top: 14px;
+  }
+}
+/** 
+ * Medium small grid
+ *
+ * Columns, offsets, pushes, and pulls for the small desktop device range.
+ */
+@media (min-width: 880px) {
+  body {
+    background: #005596;
+  }
+  body > .container #masthead #branding {
+    background: green;
+  }
 }
 /** 
  * Medium grid
@@ -6789,6 +6810,9 @@ img {
 @media (min-width: 992px) {
   body {
     background: #005596;
+  }
+  body > .container #masthead #branding {
+    background: cyan;
   }
   body > .container #main #primary {
     float: left;
@@ -6810,6 +6834,9 @@ img {
   }
   body > .container #footer hr {
     padding-bottom: 10px;
+  }
+  body.admin-bar > .container #masthead #branding .branding-parent {
+    top: auto;
   }
 }
 /**
@@ -6921,16 +6948,28 @@ table.data td.value {
  */
 .feature-excerpt {
   padding: 30px 10px;
+  clear: both;
 }
 .feature-excerpt img {
-  width: 100%;
-  margin-bottom: 10px;
+  width: 30%;
+  float: left;
+  padding-right: 12px;
+}
+.feature-excerpt .excerpt-text {
+  width: 70%;
+  float: right;
 }
 @media (min-width: 768px) {
   .feature-excerpt {
+    clear: none;
     padding: 20px 16px;
     float: left !important;
     width: 50%;
+  }
+  .feature-excerpt img {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: auto;
   }
 }
 @media (min-width: 992px) {

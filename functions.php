@@ -131,7 +131,7 @@ function cfct_load_assets() {
 	$cfct_assets_url = get_template_directory_uri() . '/assets/';
 
 	// Styles
-	wp_enqueue_style('styles', $cfct_assets_url . 'css/styles-on-our-terms.min.css', array(), CFCT_URL_VERSION);
+	wp_enqueue_style('styles', $cfct_assets_url . 'css/styles-on-our-terms.min.css', array(), '1.1');
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

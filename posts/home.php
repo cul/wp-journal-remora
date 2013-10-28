@@ -25,15 +25,10 @@ get_header();
 		<section id="introduction">
 			<?php
 			$the_query = new WP_Query( 'pagename=introduction' );
-			while ( $the_query->have_posts() ) :
+			while ( $the_query->have_posts() ) {
 				$the_query->the_post();
-			?>
-			<header>
-				<h1 class="entry-title"><?php the_title(); ?></h1>
-			</header>
-			<?php 
-			the_content();
-			endwhile;
+				the_content();
+			}
 			wp_reset_postdata();
 			?>
 		</section>

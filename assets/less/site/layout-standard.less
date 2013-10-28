@@ -33,6 +33,7 @@ body {
 
 			#branding {
 				margin: auto;
+				padding: @padding-small-vertical @padding-small-horizontal;
 			}
 
 			#site-name {
@@ -43,19 +44,19 @@ body {
 			}
 
 			.tagline {
-				display: inline-block;
+				display: block;
 				font-family: @font-family-sans-serif;
 				font-weight: 100;
 				font-size: 28px;
 				text-align: left;
-				padding-left: 50px;
 				vertical-align: bottom;
 			}
 
 			.branding-parent {
-				float: right;
-				height: 150px;
-				margin-top: 30px;
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 110px;
 			}
 		}
 
@@ -270,6 +271,43 @@ img {
  		#secondary {
  			padding: @padding-small-horizontal @padding-large-horizontal @padding-large-vertical;
 
+ 		}
+
+ 		#masthead {
+ 			#gradient > .vertical-three-colors(@start-color: lighten(@navbar-default-bg, 8%); @mid-color: @body-bg; @color-stop: 85%;  @end-color: @body-bg);
+
+ 			#branding {
+ 				margin: auto;
+ 			}
+
+ 			#site-name {
+ 				display: inline-block;
+
+ 				text-align: auto;
+ 				width: 200px;
+ 			}
+
+ 			.tagline {
+ 				display: inline-block;
+ 				font-family: @font-family-sans-serif;
+ 				font-weight: 100;
+ 				font-size: 28px;
+ 				text-align: left;
+ 				padding-left: 50px;
+ 				vertical-align: bottom;
+ 			}
+
+ 			.branding-parent {
+ 				position: relative;
+ 				float: right;
+ 				margin-top: 47px;
+ 				text-align: center;
+ 				width: percentage((4 / @grid-columns));
+
+ 				img {
+ 					width: 130px;
+ 				}
+ 			}
  		}
 
  		#nav-main {

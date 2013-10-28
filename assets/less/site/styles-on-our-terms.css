@@ -6692,6 +6692,12 @@ body .navbar-default {
 .nav-secondary li.widget .widget-title {
   margin-top: 0;
 }
+dt {
+  margin-top: 10px;
+}
+dt:first-child {
+  margin-top: 0;
+}
 img {
   max-width: 100%;
   height: auto;
@@ -6770,6 +6776,10 @@ body.admin-bar > .container #masthead #branding .branding-parent {
   body > .container .nav li:first-child {
     border-left: 1px #ffffff solid;
   }
+  body > .container .nav > li > a {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
   body.admin-bar > .container #masthead #branding .branding-parent {
     top: 14px;
   }
@@ -6783,6 +6793,9 @@ body.admin-bar > .container #masthead #branding .branding-parent {
   body {
     background: #005596;
   }
+  body > .container #masthead #branding {
+    background: gray;
+  }
   body > .container #masthead #branding .branding-parent {
     position: relative;
     float: right;
@@ -6791,6 +6804,10 @@ body.admin-bar > .container #masthead #branding .branding-parent {
     width: 130px;
     margin-top: 47px;
     text-align: right;
+  }
+  .nav > li > a {
+    padding-left: 15px;
+    padding-right: 15px;
   }
   body.admin-bar > .container #masthead #branding .branding-parent {
     top: 0;

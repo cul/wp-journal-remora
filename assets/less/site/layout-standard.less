@@ -24,6 +24,11 @@ body {
 		background: @body-bg;
 		.box-shadow(0px 0px 7px rgba(0,0,0,0.9));
 
+		.nav > li > a {
+ 				padding-left: (@padding-small-horizontal - 3);
+ 				padding-right: (@padding-small-horizontal - 3);
+ 			}
+
 		#masthead {
 			#gradient > .vertical-three-colors(@start-color: lighten(@navbar-default-bg, 8%); @mid-color: @body-bg; @color-stop: 85%;  @end-color: @body-bg);
 
@@ -333,7 +338,6 @@ body.admin-bar >.container #masthead #branding .branding-parent { top: 39px; }
  			.actions {
 
  			}
-
  		}
  	}
  	body.admin-bar >.container #masthead #branding .branding-parent { top: 14px; }
@@ -352,6 +356,7 @@ body.admin-bar >.container #masthead #branding .branding-parent { top: 39px; }
 
  		& > .container {
 
+
  			#masthead #branding { 
 
  				.branding-parent {
@@ -369,6 +374,7 @@ body.admin-bar >.container #masthead #branding .branding-parent { top: 39px; }
  			}
  		}
  	}
+
  	body.admin-bar >.container #masthead #branding .branding-parent { top: 0; }
 
  }
@@ -424,6 +430,11 @@ body.admin-bar >.container #masthead #branding .branding-parent { top: 39px; }
  				hr {
  					padding-bottom: @padding-large-vertical;
  				}
+ 			}
+
+ 			.nav > li > a {
+ 				padding-left: (@padding-large-horizontal - 1);
+ 				padding-right: (@padding-large-horizontal - 1);
  			}
  		}
 

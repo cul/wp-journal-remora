@@ -72,7 +72,8 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 							'theme_location' => 'main',
 							'depth'      => 2,
 							'container'  => false,
-							'menu_class' => 'nav navbar-nav nav-main',
+							'menu_id' => 'nav-menu',
+							'menu_class' => 'nav navbar-nav',
 							'fallback_cb' => 'wp_page_menu',
 							'walker' => new wp_bootstrap_navwalker())
 						);
@@ -82,7 +83,8 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 							'theme_location' => 'actions',
 							'depth'      => 2,
 							'container'  => false,
-							'menu_class' => 'nav navbar-nav nav-actions',
+							'menu_id' => 'nav-actions',
+							'menu_class' => 'nav navbar-nav',
 							'fallback_cb' => 'wp_page_menu',
 							'walker' => new wp_bootstrap_navwalker())
 						);

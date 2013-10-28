@@ -6,7 +6,7 @@
  */
 
  .clearfix {
- 	clear:both !important;
+ 	clear:both;
  }
 /**
  * Basic layout
@@ -152,16 +152,15 @@ body {
 
 	ul {
 		.clearfix;
-		float: none;
 		padding: @padding-small-vertical (@grid-gutter-width/2);
 		margin: auto;
 
-		&.nav-main, &.nav-actions {
+		&#nav-menu, &#nav-actions {
 			clear: none;
 			width: auto;
 		}
 
-		&.nav-actions { 
+		&#nav-actions { 
 
 			a[title='Submit an Article'] {
 				&:before { 
@@ -276,11 +275,11 @@ img {
  		#nav-main {
  			.clearfix;
 
- 			&.nav-main { 
+ 			& ul#nav-menu { 
  				.pull-left;
  			}
 
- 			&.nav-actions { 
+ 			& ul#nav-actions { 
  				.pull-right;
  			}
  		}

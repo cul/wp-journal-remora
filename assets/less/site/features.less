@@ -29,15 +29,21 @@
 @media (min-width: @screen-sm-min) {
 
 	.feature-excerpt {
+		.pull-left;
+
 		clear: none;
 		padding: @padding-large-vertical*2 @padding-large-horizontal;
-		.pull-left;
-		width: percentage((6 / @grid-columns));
+		width: percentage((3 / @grid-columns));
 
 		img {
-			width: 100%;
-			margin-bottom: @padding-large-vertical;
-			padding: auto;
+			width: auto;
+			float:none;
+			padding-right: @padding-base-horizontal;
+		}
+
+		.excerpt-text {
+			width: auto;
+			float:none;
 		}
 	}
 }
@@ -46,8 +52,6 @@
 @media (min-width: @screen-md-min) {
 
 	.feature-excerpt {
-		width: percentage((3 / @grid-columns));
-		padding: @padding-large-vertical*2 @padding-small-horizontal;
 
 		img {
 			width: auto;

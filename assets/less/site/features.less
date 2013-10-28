@@ -36,14 +36,35 @@
 		width: percentage((3 / @grid-columns));
 
 		img {
-			width: auto;
+			display: inline-block;
 			float:none;
+			width: 100%;
+			
 			padding-right: @padding-base-horizontal;
 		}
 
 		.excerpt-text {
 			width: auto;
 			float:none;
+		}
+	}
+
+	.features-3 .feature-excerpt { width: percentage((4 / @grid-columns)); }
+	.features-2 .feature-excerpt { width: percentage((6 / @grid-columns)); }
+	.features-1 .feature-excerpt { 
+		width: percentage((12 / @grid-columns)); 
+		padding: @padding-large-vertical*3 @padding-small-horizontal;
+		clear: both;
+
+		img {
+			width: 30%;
+			float:left;
+			padding-right: @padding-base-horizontal;
+		}
+
+		.excerpt-text {
+			width: 70%;
+			float:right;
 		}
 	}
 }
@@ -51,20 +72,6 @@
 // Medium styles
 @media (min-width: @screen-md-min) {
 
-	.feature-excerpt {
-
-		img {
-			width: auto;
-			float:none;
-			padding-right: @padding-base-horizontal;
-		}
-
-		.excerpt-text {
-			width: auto;
-			float:none;
-		}
-
-	}
 }
 
 // Large styles

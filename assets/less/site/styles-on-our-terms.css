@@ -6444,10 +6444,6 @@ body > .container {
   -webkit-box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.9);
   box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.9);
 }
-body > .container img {
-  max-height: 100%;
-  max-width: 100%;
-}
 body > .container #masthead {
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f1f0f0), color-stop(85%, #ffffff), to(#ffffff));
   background-image: -webkit-linear-gradient(#f1f0f0, #ffffff 85%, #ffffff);
@@ -6457,7 +6453,6 @@ body > .container #masthead {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff1f0f0', endColorstr='#ffffffff', GradientType=0);
 }
 body > .container #masthead #branding {
-  background: purple;
   margin: auto;
   padding: 5px 10px;
 }
@@ -6726,16 +6721,6 @@ body.admin-bar > .container #masthead #branding .branding-parent {
   }
   body > .container #masthead #branding {
     margin: auto;
-    background: yellow;
-  }
-  body > .container #masthead #branding .branding-parent {
-    top: 0px;
-    position: relative;
-    float: right;
-    margin-top: 47px;
-    text-align: right;
-    width: 138px;
-    right: inherit;
   }
   body > .container #masthead #site-name {
     display: inline-block;
@@ -6798,8 +6783,17 @@ body.admin-bar > .container #masthead #branding .branding-parent {
   body {
     background: #005596;
   }
-  body > .container #masthead #branding {
-    background: green;
+  body > .container #masthead #branding .branding-parent {
+    position: relative;
+    float: right;
+    top: 0px;
+    right: inherit;
+    width: 130px;
+    margin-top: 47px;
+    text-align: right;
+  }
+  body.admin-bar > .container #masthead #branding .branding-parent {
+    top: 0;
   }
 }
 /** 
@@ -6811,8 +6805,11 @@ body.admin-bar > .container #masthead #branding .branding-parent {
   body {
     background: #005596;
   }
-  body > .container #masthead #branding {
-    background: cyan;
+  body > .container #masthead #branding .branding-parent {
+    width: 25%;
+  }
+  body > .container #masthead #branding .branding-parent img {
+    width: 130px;
   }
   body > .container #main #primary {
     float: left;
@@ -6845,7 +6842,10 @@ body.admin-bar > .container #masthead #branding .branding-parent {
  * Columns, offsets, pushes, and pulls for the large desktop device range.
  */
 @media (min-width: 1200px) {
-  
+  body > .container #masthead #branding .branding-parent {
+    width: 33.33333333333333%;
+    text-align: center;
+  }
 }
 /**
   * A few tweaks for OJS
@@ -6961,22 +6961,44 @@ table.data td.value {
 }
 @media (min-width: 768px) {
   .feature-excerpt {
+    float: left !important;
     clear: none;
     padding: 20px 16px;
-    float: left !important;
-    width: 50%;
+    width: 25%;
   }
   .feature-excerpt img {
+    display: inline-block;
+    float: none;
     width: 100%;
-    margin-bottom: 10px;
-    padding: auto;
+    padding-right: 12px;
+  }
+  .feature-excerpt .excerpt-text {
+    width: auto;
+    float: none;
+  }
+  .features-3 .feature-excerpt {
+    width: 33.33333333333333%;
+  }
+  .features-2 .feature-excerpt {
+    width: 50%;
+  }
+  .features-1 .feature-excerpt {
+    width: 100%;
+    padding: 30px 10px;
+    clear: both;
+  }
+  .features-1 .feature-excerpt img {
+    width: 30%;
+    float: left;
+    padding-right: 12px;
+  }
+  .features-1 .feature-excerpt .excerpt-text {
+    width: 70%;
+    float: right;
   }
 }
 @media (min-width: 992px) {
-  .feature-excerpt {
-    width: 25%;
-    padding: 20px 10px;
-  }
+  
 }
 @media (min-width: 1200px) {
   

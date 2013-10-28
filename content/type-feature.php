@@ -18,6 +18,7 @@ if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
 if (CFCT_DEBUG) { cfct_banner(__FILE__); }
 
 the_post(); // Doing this here because of the strange ways we call this file
+$features = get_post_features();
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class('clearfix', 'featured'); ?>>
 	<header class="entry-header">
@@ -30,9 +31,8 @@ the_post(); // Doing this here because of the strange ways we call this file
 		?>
 	</section> <!-- #entry-content -->
 
-	<section id="features">
+	<section id="features" class="features-<?php echo count($features); ?>">
 		<?php
-		$features = get_post_features();
 		if(is_array($features))
 			foreach($features as $feature) {
 				$data = array(

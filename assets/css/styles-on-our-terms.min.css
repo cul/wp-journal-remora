@@ -917,4 +917,4 @@ table.data td.value{display:block;width:100%;margin-bottom:10px;}
 #sidebarTwitterWidget{padding:0 !important;}#sidebarTwitterWidget iframe{width:100% !important;min-width:1px !important;}
 .feature-excerpt{padding:30px 10px;clear:both;}.feature-excerpt img{width:30%;float:left;padding-right:12px;}
 .feature-excerpt .excerpt-text{width:70%;float:right;}
-@media (min-width:768px){.feature-excerpt{clear:none;padding:20px 16px;float:left !important;width:50%;}.feature-excerpt img{width:100%;margin-bottom:10px;padding:auto;}}@media (min-width:992px){.feature-excerpt{width:25%;padding:20px 10px;}}@media (min-width:1200px){}
+@media (min-width:768px){.feature-excerpt{clear:none;padding:20px 16px;float:left !important;width:50%;}.feature-excerpt img{width:100%;margin-bottom:10px;padding:auto;}}@media (min-width:992px){.feature-excerpt{width:25%;padding:20px 10px;}.feature-excerpt img{width:auto;float:none;padding-right:12px;} .feature-excerpt .excerpt-text{width:auto;float:none;}}@media (min-width:1200px){}

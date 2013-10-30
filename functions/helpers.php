@@ -2,7 +2,9 @@
 
 function vox($utterance, $args = array('format' => "html")){
 
-	switch($args['format']) {
+	extract($args);
+
+	switch($format) {
 
 		case 'html': 
 		$before = '<pre class="vox">';
@@ -12,6 +14,8 @@ function vox($utterance, $args = array('format' => "html")){
 		default:
 		break;
 	}
+
+	if($label) $before = "{$before}\n{$label}\n";
 
 	$articulation = $before.var_export($utterance, 1).$after;
 

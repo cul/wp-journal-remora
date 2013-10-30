@@ -5,8 +5,8 @@ function vox($utterance, $args = array('format' => "html")){
 	switch($args['format']) {
 
 		case 'html': 
-		$before = '<pre>';
-		$after = '</pre>';
+		$before = '<pre class="vox">';
+		$after = '</pre><!-- /.vox -->';
 		break;
 
 		default:

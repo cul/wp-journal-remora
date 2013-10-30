@@ -108,6 +108,13 @@ function cfct_register_options() {
 					'help' => '<br /><span class="cfct-help">'.__('Path of the Open Journal Systems install to query.', 'carrington').'</span>',
 					'class' => 'cfct-text-long',
 				),
+				'ojs_db' => array(
+					'type' => 'text',
+					'label' => __('OJS Database Name', 'carrington'),
+					'name' => 'ojs_db',
+					'help' => '<br /><span class="cfct-help">'.__("Open Journal Systems' Database Name", 'carrington').'</span>',
+					'class' => 'cfct-text-long',
+				),
 				'wp_journal_slug' => array(
 					'type' => 'text',
 					'label' => __('WordPress Journal Page Slug', 'carrington'),

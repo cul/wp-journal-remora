@@ -140,6 +140,7 @@ function cfct_load_assets() {
 	// Scripts
 	wp_enqueue_script('bootstrap', $cfct_assets_url . 'js/bootstrap.min.js', array('jquery'), CFCT_URL_VERSION);
 	//wp_enqueue_script('responsive-sidebar', $cfct_assets_url . 'js/responsive-sidebar.js', array('jquery'), CFCT_URL_VERSION);
+	wp_enqueue_script('placeholder', $cfct_assets_url . 'js/jquery.placeholder.min.js', array('jquery'), CFCT_URL_VERSION);
 	wp_enqueue_script('script', $cfct_assets_url . 'js/script.js', array('jquery'), CFCT_URL_VERSION);
 	
 }

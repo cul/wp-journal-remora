@@ -25,9 +25,9 @@ body {
 		.box-shadow(0px 0px 7px rgba(0,0,0,0.9));
 
 		.nav > li > a {
- 				padding-left: (@padding-small-horizontal - 3);
- 				padding-right: (@padding-small-horizontal - 3);
- 			}
+			padding-left: (@padding-small-horizontal - 3);
+			padding-right: (@padding-small-horizontal - 3);
+		}
 
 		#masthead {
 			#gradient > .vertical-three-colors(@start-color: lighten(@navbar-default-bg, 8%); @mid-color: @body-bg; @color-stop: 85%;  @end-color: @body-bg);
@@ -184,6 +184,13 @@ body {
 					content: "\e028"; 
 				} 
 			}
+
+			a[title="Twitter"] {
+				background: url("../img/twitter-xxl.png") no-repeat 13px 16px;
+				text-indent: 25px;
+				width: 40px;
+				overflow: hidden;
+			}
 		}
 	}
 
@@ -269,6 +276,15 @@ img {
 }
 
 body.admin-bar >.container #masthead #branding .branding-parent { top: 39px; }
+
+// Accordion panels
+.panel-heading {
+	margin-bottom: 0;
+}
+
+.panel-title {
+	padding-bottom: 0;
+}
 
 
 /**
@@ -496,4 +512,8 @@ body.admin-bar >.container #masthead #branding .branding-parent { top: 39px; }
   			margin-bottom: @padding-large-vertical;
   		}
   	}
+  }
+
+  .tocGalleys {
+  	text-align: right;
   }

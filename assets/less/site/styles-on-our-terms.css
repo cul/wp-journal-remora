@@ -6444,6 +6444,10 @@ body > .container {
   -webkit-box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.9);
   box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.9);
 }
+body > .container .nav > li > a {
+  padding-left: 7px;
+  padding-right: 7px;
+}
 body > .container #masthead {
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f1f0f0), color-stop(85%, #ffffff), to(#ffffff));
   background-image: -webkit-linear-gradient(#f1f0f0, #ffffff 85%, #ffffff);
@@ -6619,6 +6623,12 @@ body .navbar-default {
 #nav-main ul#nav-actions a[title='Manage Submissions']:before:empty {
   width: 1em;
 }
+#nav-main ul#nav-actions a[title="Twitter"] {
+  background: url("../img/twitter-xxl.png") no-repeat 13px 16px;
+  text-indent: 25px;
+  width: 40px;
+  overflow: hidden;
+}
 #nav-main .navbar-toggle {
   float: left !important;
   background-image: -webkit-gradient(linear, left 0%, left 100%, from(#fbfafa), to(#bfbcbc));
@@ -6705,6 +6715,12 @@ img {
 body.admin-bar > .container #masthead #branding .branding-parent {
   top: 39px;
 }
+.panel-heading {
+  margin-bottom: 0;
+}
+.panel-title {
+  padding-bottom: 0;
+}
 /**
  * Small Screens
  * Columns, offsets, pushes, and pulls for the small device range, from phones
@@ -6776,10 +6792,6 @@ body.admin-bar > .container #masthead #branding .branding-parent {
   body > .container .nav li:first-child {
     border-left: 1px #ffffff solid;
   }
-  body > .container .nav > li > a {
-    padding-left: 7px;
-    padding-right: 7px;
-  }
   body.admin-bar > .container #masthead #branding .branding-parent {
     top: 14px;
   }
@@ -6793,9 +6805,6 @@ body.admin-bar > .container #masthead #branding .branding-parent {
   body {
     background: #005596;
   }
-  body > .container #masthead #branding {
-    background: gray;
-  }
   body > .container #masthead #branding .branding-parent {
     position: relative;
     float: right;
@@ -6804,10 +6813,6 @@ body.admin-bar > .container #masthead #branding .branding-parent {
     width: 130px;
     margin-top: 47px;
     text-align: right;
-  }
-  .nav > li > a {
-    padding-left: 15px;
-    padding-right: 15px;
   }
   body.admin-bar > .container #masthead #branding .branding-parent {
     top: 0;
@@ -6849,6 +6854,10 @@ body.admin-bar > .container #masthead #branding .branding-parent {
   body > .container #footer hr {
     padding-bottom: 10px;
   }
+  body > .container .nav > li > a {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
   body.admin-bar > .container #masthead #branding .branding-parent {
     top: auto;
   }
@@ -6888,6 +6897,9 @@ table.data td.value {
   width: 100%;
   margin-bottom: 10px;
 }
+.tocGalleys {
+  text-align: right;
+}
 /**
  * Styles for On Our Terms
  *
@@ -6912,13 +6924,13 @@ table.data td.value {
     left: 0;
     margin: 0;
     width: 100%;
-    min-height: 271px;
+    min-height: 250px;
   }
   body > .container #masthead #nav-main {
     margin-bottom: 0;
   }
   body > .container #main {
-    margin-top: 271px;
+    margin-top: 250px;
     padding-top: 20px;
   }
   #nav-main .nav-container,
@@ -6956,6 +6968,9 @@ table.data td.value {
   width: 100% !important;
   min-width: 1px !important;
 }
+.widget_remora_ojs_widget .excerpt {
+  margin-bottom: 6px;
+}
 /**
  * Featured Articles
  * Styles for On Our Terms 
@@ -6963,6 +6978,14 @@ table.data td.value {
  * Built off of Bootstrap v. 3
  *
  */
+.single-feature header img {
+  float: right !important;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  margin: 0 0 6px 12px;
+}
 .feature-excerpt {
   padding: 30px 10px;
   clear: both;

@@ -15,7 +15,7 @@ function vox($utterance, $args = array('format' => "html")){
 		break;
 	}
 
-	if($label) $before = "{$before}\n{$label}\n";
+	if($label) $before = "{$before}\n{$label}";
 
 	$articulation = $before.var_export($utterance, 1).$after;
 

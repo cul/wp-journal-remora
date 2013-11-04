@@ -186,10 +186,14 @@ body {
 			}
 
 			a[title="Twitter"] {
-				background: url("../img/twitter-xxl.png") no-repeat 12px 16px;
+				background: url("../img/twitter-sprite.png") no-repeat 12px 16px;
 				text-indent: 25em;
 				width: 40px;
 				overflow: hidden;
+
+				&:hover{
+					background-position: 12px -39px;
+				}
 			}
 		}
 	}
@@ -278,7 +282,7 @@ img {
 body.admin-bar >.container #masthead #branding .branding-parent { top: 39px; }
 
 // Accordion panels
-.panel-group{
+.panel {
 	.panel-heading {
 		margin-bottom: 0;
 	}

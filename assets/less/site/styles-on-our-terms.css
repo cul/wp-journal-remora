@@ -6624,10 +6624,13 @@ body .navbar-default {
   width: 1em;
 }
 #nav-main .nav#nav-actions a[title="Twitter"] {
-  background: url("../img/twitter-xxl.png") no-repeat 12px 16px;
+  background: url("../img/twitter-sprite.png") no-repeat 12px 16px;
   text-indent: 25em;
   width: 40px;
   overflow: hidden;
+}
+#nav-main .nav#nav-actions a[title="Twitter"] :hover {
+  background-position-top: 32px;
 }
 #nav-main .navbar-toggle {
   float: left !important;
@@ -6715,10 +6718,10 @@ img {
 body.admin-bar > .container #masthead #branding .branding-parent {
   top: 39px;
 }
-.panel-heading {
+.panel .panel-heading {
   margin-bottom: 0;
 }
-.panel-title {
+.panel .panel-title {
   padding-bottom: 0;
 }
 /**

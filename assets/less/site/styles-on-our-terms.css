@@ -6559,13 +6559,13 @@ body .navbar-default {
   border-bottom-right-radius: 0px;
   border-bottom-left-radius: 0px;
 }
-#nav-main ul {
+#nav-main .nav {
   clear: both;
   padding: 5px 15px;
   margin: auto;
 }
-#nav-main ul:before,
-#nav-main ul:after {
+#nav-main .nav:before,
+#nav-main .nav:after {
   content: " ";
   /* 1 */
 
@@ -6573,11 +6573,11 @@ body .navbar-default {
   /* 2 */
 
 }
-#nav-main ul:after {
+#nav-main .nav:after {
   clear: both;
 }
-#nav-main ul:before,
-#nav-main ul:after {
+#nav-main .nav:before,
+#nav-main .nav:after {
   content: " ";
   /* 1 */
 
@@ -6585,15 +6585,15 @@ body .navbar-default {
   /* 2 */
 
 }
-#nav-main ul:after {
+#nav-main .nav:after {
   clear: both;
 }
-#nav-main ul#nav-menu,
-#nav-main ul#nav-actions {
+#nav-main .nav#nav-menu,
+#nav-main .nav#nav-actions {
   clear: none;
   width: auto;
 }
-#nav-main ul#nav-actions a[title='Submit an Article']:before {
+#nav-main .nav#nav-actions a[title='Submit an Article']:before {
   position: relative;
   top: 1px;
   display: inline-block;
@@ -6605,10 +6605,10 @@ body .navbar-default {
   padding-right: 0.25em;
   content: "\e022";
 }
-#nav-main ul#nav-actions a[title='Submit an Article']:before:empty {
+#nav-main .nav#nav-actions a[title='Submit an Article']:before:empty {
   width: 1em;
 }
-#nav-main ul#nav-actions a[title='Manage Submissions']:before {
+#nav-main .nav#nav-actions a[title='Manage Submissions']:before {
   position: relative;
   top: 1px;
   display: inline-block;
@@ -6620,12 +6620,12 @@ body .navbar-default {
   padding-right: 0.25em;
   content: "\e028";
 }
-#nav-main ul#nav-actions a[title='Manage Submissions']:before:empty {
+#nav-main .nav#nav-actions a[title='Manage Submissions']:before:empty {
   width: 1em;
 }
-#nav-main ul#nav-actions a[title="Twitter"] {
-  background: url("../img/twitter-xxl.png") no-repeat 13px 16px;
-  text-indent: 25px;
+#nav-main .nav#nav-actions a[title="Twitter"] {
+  background: url("../img/twitter-xxl.png") no-repeat 12px 16px;
+  text-indent: 25em;
   width: 40px;
   overflow: hidden;
 }
@@ -6752,12 +6752,12 @@ body.admin-bar > .container #masthead #branding .branding-parent {
   body > .container #masthead .tagline {
     padding-left: 1%;
   }
-  body > .container #nav-main ul {
+  body > .container #nav-main .nav {
     clear: both;
     padding: 0 15px;
   }
-  body > .container #nav-main ul:before,
-  body > .container #nav-main ul:after {
+  body > .container #nav-main .nav:before,
+  body > .container #nav-main .nav:after {
     content: " ";
     /* 1 */
   
@@ -6765,11 +6765,11 @@ body.admin-bar > .container #masthead #branding .branding-parent {
     /* 2 */
   
   }
-  body > .container #nav-main ul:after {
+  body > .container #nav-main .nav:after {
     clear: both;
   }
-  body > .container #nav-main ul:before,
-  body > .container #nav-main ul:after {
+  body > .container #nav-main .nav:before,
+  body > .container #nav-main .nav:after {
     content: " ";
     /* 1 */
   
@@ -6777,13 +6777,13 @@ body.admin-bar > .container #masthead #branding .branding-parent {
     /* 2 */
   
   }
-  body > .container #nav-main ul:after {
+  body > .container #nav-main .nav:after {
     clear: both;
   }
-  body > .container #nav-main ul#nav-menu {
+  body > .container #nav-main #nav-menu {
     float: left !important;
   }
-  body > .container #nav-main ul#nav-actions {
+  body > .container #nav-main #nav-actions {
     float: right !important;
   }
   body > .container .nav li {
@@ -6794,6 +6794,10 @@ body.admin-bar > .container #masthead #branding .branding-parent {
   }
   body.admin-bar > .container #masthead #branding .branding-parent {
     top: 14px;
+  }
+  body > .container #nav-main .nav {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 /** 

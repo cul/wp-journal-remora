@@ -69,16 +69,6 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 				<div class="nav-container">
 					<div class="nav-collapse collapse">
 						<?php 
-						wp_nav_menu( array(
-							'menu'       => 'main',
-							'theme_location' => 'main',
-							'depth'      => 2,
-							'container'  => false,
-							'menu_id' => 'nav-menu',
-							'menu_class' => 'nav navbar-nav',
-							'fallback_cb' => 'wp_page_menu',
-							'walker' => new wp_bootstrap_navwalker())
-						);
 
 						wp_nav_menu( array(
 							'menu'       => 'actions',
@@ -90,6 +80,18 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 							'fallback_cb' => 'wp_page_menu',
 							'walker' => new wp_bootstrap_navwalker())
 						);
+						
+						wp_nav_menu( array(
+							'menu'       => 'main',
+							'theme_location' => 'main',
+							'depth'      => 2,
+							'container'  => false,
+							'menu_id' => 'nav-menu',
+							'menu_class' => 'nav navbar-nav',
+							'fallback_cb' => 'wp_page_menu',
+							'walker' => new wp_bootstrap_navwalker())
+						);
+
 						?>
 					</div>
 				</div>

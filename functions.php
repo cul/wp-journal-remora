@@ -40,6 +40,7 @@ if (!(defined('CFCT_URL_VERSION'))) {
 /**
  * Includes
  */
+include_once(CFCT_PATH.'journal-remora-core/journal-remora.php');
 include_once(CFCT_PATH.'carrington-core/carrington.php');
 include_once('functions/helpers.php'); // Creates the Feature post type
 include_once(CFCT_PATH.'functions/site-utils.php'); // WP site utilities

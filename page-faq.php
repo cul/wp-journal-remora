@@ -11,7 +11,7 @@
 // **********************************************************************
 // This program is distributed in the hope that it will be useful, but
 // WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
 // **********************************************************************
 
 if (__FILE__ == $_SERVER['SCRIPT_FILENAME']) { die(); }
@@ -21,38 +21,13 @@ get_header();
 ?>
 
 <div id="primary" class="c1-8">
-	<article>
-		<section id="introduction">
-			<?php
-			$the_query = new WP_Query( 'pagename=introduction' );
-			while ( $the_query->have_posts() ) {
-				$the_query->the_post();
-				the_content();
-			}
-			wp_reset_postdata();
-			?>
-		</section>
-		<section id="featured" class="featured">
-			<?php
-
-			global $wp_query;
-			$wp_query = new WP_Query( array( 'post_type' => 'feature', 'orderby' => 'meta_value', 'meta_key' => 'current_feature' ) );
-
-			cfct_template_file('content', 'type-feature');
-
-			?>
-		</section>
-		<div class="clearfix">
-			<?php
-			cfct_loop();
-			cfct_misc('nav-posts');
-			?>
-
-		</div>
-	</article>
+	<?php
+	// For the loop used, look in /loops
+	cfct_template_file('loop', 'page-faq');	//comments_template();
+	?>
 </div><!-- #primary -->
 
-<?php
+<?php 
 get_sidebar();
 get_footer();
 ?>

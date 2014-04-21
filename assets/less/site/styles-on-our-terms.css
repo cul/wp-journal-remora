@@ -6629,8 +6629,8 @@ body .navbar-default {
   width: 40px;
   overflow: hidden;
 }
-#nav-main .nav#nav-actions a[title="Twitter"] :hover {
-  background-position-top: 32px;
+#nav-main .nav#nav-actions a[title="Twitter"]:hover {
+  background-position: 12px -39px;
 }
 #nav-main .navbar-toggle {
   float: left !important;
@@ -6991,7 +6991,7 @@ table.data td.value {
   border-top-left-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  margin: 0 0 6px 12px;
+  margin: 0 16px 6px 12px;
 }
 .feature-excerpt {
   padding: 30px 10px;

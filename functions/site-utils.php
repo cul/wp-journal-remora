@@ -171,7 +171,8 @@ function qa_to_html($str, $match_filter = null) {
 	$lines = explode("\n", $str);
 	$q_rx = "/^[\t ]*Q\.\s/i";
 	$a_rx = "/^[\t ]*A\.\s/i";
-	$close_container_rx = "/end qa/i";
+	$open_qa_rx = "/start qa/i";
+	$close_qa_rx = "/end qa/i";
 
 	$qa_container = 'dl';
 	$q_tag = 'dt';
@@ -180,31 +181,57 @@ function qa_to_html($str, $match_filter = null) {
 	
 
 	foreach($lines as $line) {
-		static $container_opened = false;
-		if(preg_match($q_rx, $line)){
-			if(!$container_opened) {
-				$container_opened = true;
-				$html .= "\n<{$qa_container}>";
-			}
-			$filtered_line = (function_exists($match_filter)) ?  $match_filter($line) : $line;
-			$html .= "\n<{$q_tag}>".preg_replace($q_rx, "", $filtered_line)."</{$q_tag}>";
+
+		static $container_open = false;
+
+		// Open or close the qa container as requested
+		if (preg_match($open_qa_rx, $line) ) {
+
+			$container_open = true;
+			$line = null;
+			$html .= "\n<{$qa_container}>";
 		}
-		elseif(preg_match($a_rx, $line)){
-			if(!$container_opened) {
-				$container_opened = true;
-				$html .= "\n<{$qa_container}>";
-			}
-			$filtered_line = (function_exists($match_filter)) ?  $match_filter($line) : $line;
-			$html .= "\n<{$a_tag}>".preg_replace($a_rx, "", $filtered_line)."</{$a_tag}>";
-		}
-		elseif($container_opened && preg_match($close_container_rx, $line)){
-			$container_opened = false;
+
+		elseif ($container_open && preg_match($close_qa_rx, $line) ) {
+
+			$container_open = false;
+			$line = null;
 			$html .= "\n</{$qa_container}>\n";
 		}
-		else $html .= "\n{$line}";
+
+		// Properly tag Q and A lines appropriately
+		if($line && $container_open){
+
+			$processed_line = (function_exists($match_filter) ) ?  $match_filter($line) : $line;
+			
+			if(preg_match($q_rx, $line) ){
+
+				$match = true;
+				$html .= "\n<{$q_tag}>".preg_replace($q_rx, "", $processed_line)."</{$q_tag}>";
+			}
+
+			elseif(preg_match($a_rx, $line) ){
+
+				$match = true;
+				$html .= "\n<{$a_tag}>".preg_replace($a_rx, "", $processed_line)."</{$a_tag}>";
+			}
+
+			else {
+				$match = false;
+			}
+		}
+
+		// Let other lines through normally
+		if(!$match && $line) 
+			$html .= "\n<p>{$line}</p>";
 	}
 
-	$html .= "\n</{$qa_container}>\n";
+	if ($container_open) { 
+
+		$container_open = false;
+		$html .= "\n</{$qa_container}>\n";
+	}
+	echo "<!--\n".var_export($lines, 1)."\n-->";
 
 	return $html;
 }

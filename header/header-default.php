@@ -33,6 +33,7 @@ $title_description = (is_home() && !empty($blog_desc) ? ' - '.$blog_desc : '');
 	<title><?php echo ($ojsTitle) ? "{$ojsTitle} - " : wp_title( '-', true, 'right' ); echo esc_html( get_bloginfo('name'), 1 )." {$title_description}"; ?></title>
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+	<link href="favicon.ico?v=1" rel="icon" type="image/x-icon" />
 	<?php wp_head(); ?>
 
 </head>

@@ -1,8 +1,5 @@
 /**
- * Styles for On Our Terms
- *
- * Built off of Bootstrap v. 3
- *
+ * Layout
  */
 
  .clearfix {
@@ -167,22 +164,22 @@ body {
 			width: auto;
 		}
 
-		&#nav-actions { 
+		&#nav-actions {
 
 			a[title='Submit an Article'] {
-				&:before { 
+				&:before {
 					.glyphicon;
 					padding-right: 0.25em;
-					content: "\e022"; 
-				} 
+					content: "\e022";
+				}
 			}
 
 			a[title='Manage Submissions'] {
-				&:before { 
+				&:before {
 					.glyphicon;
 					padding-right: 0.25em;
-					content: "\e028"; 
-				} 
+					content: "\e028";
+				}
 			}
 
 			a[title="Twitter"] {
@@ -341,11 +338,11 @@ body.admin-bar >.container #masthead #branding .branding-parent { top: 39px; }
  				padding: 0 (@grid-gutter-width/2);
  			}
 
- 			& #nav-menu { 
+ 			& #nav-menu {
  				.pull-left;
  			}
 
- 			& #nav-actions { 
+ 			& #nav-actions {
  				.pull-right;
  			}
  		}
@@ -370,7 +367,7 @@ body.admin-bar >.container #masthead #branding .branding-parent { top: 39px; }
  	}
  }
 
-/** 
+/**
  * Medium small grid
  *
  * Columns, offsets, pushes, and pulls for the small desktop device range.
@@ -379,12 +376,12 @@ body.admin-bar >.container #masthead #branding .branding-parent { top: 39px; }
  @media (min-width: @screen-ms-min) {
 
  	body {
- 		background: @athenaCenter;
+ 		background: @brand-primary;
 
  		& > .container {
 
 
- 			#masthead #branding { 
+ 			#masthead #branding {
 
  				.branding-parent {
  					position: relative;
@@ -405,10 +402,10 @@ body.admin-bar >.container #masthead #branding .branding-parent { top: 39px; }
  	body.admin-bar >.container #masthead #branding .branding-parent { top: 0; }
 
  }
- 
 
 
- /** 
+
+ /**
  * Medium grid
  *
  * Columns, offsets, pushes, and pulls for the desktop device range.
@@ -417,7 +414,7 @@ body.admin-bar >.container #masthead #branding .branding-parent { top: 39px; }
  @media (min-width: @screen-md-min) {
 
  	body {
- 		background: @athenaCenter;
+ 		background: @brand-primary;
 
  		& > .container {
 
@@ -495,7 +492,7 @@ body.admin-bar >.container #masthead #branding .branding-parent { top: 39px; }
   */
 
   body.wp {
-  	background: @athenaCenter;
+  	background: @brand-primary;
   }
 
   // Fix OJS forms causing the iframe to misbehave at small sizes

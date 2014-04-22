@@ -1,6 +1,5 @@
 /**
-
-Theme Name: On Our Terms 2014
+Theme Name: Journal Remora
 Theme URI: http://cdrs.columbia.edu
 Description: A base theme built off of Carrington Blueprint which allows articles to be pulled in from an OJS install
 Version: 0.1
@@ -21,7 +20,7 @@ License URI: http://www.opensource.org/licenses/gpl-2.0.php
 // **********************************************************************
 // This program is distributed in the hope that it will be useful, but
 // WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // **********************************************************************
 
 NOTE: This file is not used in this theme but is included for WordPress theme expected format compatibility - it's standard to use the assets/css/ dir for actual theme CSS in a Carrington-based theme.

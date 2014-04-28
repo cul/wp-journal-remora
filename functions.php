@@ -86,7 +86,7 @@ if (! function_exists('cfct_theme_setup')) {
 		add_theme_support('post-thumbnails');
 
 		/**
-		 * New image sizes that are not overwrote in the admin.
+		 * New image sizes that are not overwritten in the admin.
 		 */
 		// add_image_size('thumb-img', 160, 120, true);
 		// add_image_size('medium-img', 510, 510, false);
@@ -135,8 +135,12 @@ function cfct_load_assets() {
 	//Variable for assets url
 	$cfct_assets_url = get_template_directory_uri() . '/assets/';
 
-	// Styles
+	// Remora Styles
 	wp_enqueue_style('styles', $cfct_assets_url . 'css/styles.css', array(), '1.1');
+
+	// Include child styles
+	wp_enqueue_style('child-styles', get_bloginfo('stylesheet_url'), array(), '1.2');
+
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
